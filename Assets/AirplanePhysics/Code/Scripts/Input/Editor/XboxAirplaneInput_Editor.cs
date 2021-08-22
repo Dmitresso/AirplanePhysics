@@ -1,4 +1,4 @@
-﻿namespace AirplanePhysics.Code.Scripts.Input.Editor {
+﻿namespace WheelApps {
     public class XboxAirplaneInput_Editor {
         
     }

@@ -1,9 +1,7 @@
-public class XboxAirplane_Input : BaseAirplane_Input {
-    void Start() {
-        
-    }
+namespace WheelApps {
+    public class XboxAirplane_Input : BaseAirplane_Input {
+        private void Start() { }
 
-    void Update() {
-        
+        private void Update() { }
     }
 }
