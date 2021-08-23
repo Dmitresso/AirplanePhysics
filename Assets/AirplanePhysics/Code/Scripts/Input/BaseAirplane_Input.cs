@@ -10,6 +10,9 @@ namespace WheelApps {
         protected float throttle = 0f;
         protected int flaps = 0;
         protected float brake = 0f;
+
+        private const string V = "Vertical";
+        private const string H = "Horizontal";
         #endregion
 
         #region Properties
@@ -33,5 +36,13 @@ namespace WheelApps {
         private void Update() { }
         #endregion
 
+        #region Custom Methods
+        private void HandleInput() {
+            pitch = Input.GetAxis(V);
+            roll = Input.GetAxis(H);
+        }
+        
+
+        #endregion
     }
 }
