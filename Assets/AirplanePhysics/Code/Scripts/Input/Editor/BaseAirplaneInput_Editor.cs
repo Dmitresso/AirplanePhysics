@@ -32,7 +32,6 @@ namespace WheelApps {
             
             Repaint();
         }
-
         #endregion
     }
 }
