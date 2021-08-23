@@ -4,15 +4,24 @@ namespace WheelApps {
     public class BaseAirplane_Input : MonoBehaviour {
 
         #region Variables
-        protected float pitch = 0f;
-        protected float roll = 0f;
-        protected float yaw = 0f;
-        protected float throttle = 0f;
-        protected int flaps = 0;
-        protected float brake = 0f;
+        protected float pitch;
+        protected float roll;
+        protected float yaw;
+        protected float throttle;
+        protected float brake;
+        
+        protected int flaps;
+        public int minFlaps = 0;
+        public int maxFlaps = 3;
 
         private const string V = "Vertical";
         private const string H = "Horizontal";
+        private const string Y = "Yaw";
+        private const string T = "Throttle";
+
+        public KeyCode brakeKey = KeyCode.Space;
+        public KeyCode lFlap = KeyCode.F;
+        public KeyCode rFlap = KeyCode.G;
         #endregion
 
         #region Properties
@@ -31,18 +40,28 @@ namespace WheelApps {
         
         
         #region Builtin Metods
+
         private void Start() { }
 
-        private void Update() { }
+        private void Update() {
+            HandleInput();
+        }
         #endregion
 
         #region Custom Methods
         private void HandleInput() {
             pitch = Input.GetAxis(V);
             roll = Input.GetAxis(H);
+            yaw = Input.GetAxis(Y);
+            throttle = Input.GetAxis(T);
+
+            brake = Input.GetKey(brakeKey) ? 1f : 0f;
+
+            if (Input.GetKeyDown(lFlap)) flaps += 1;
+            if (Input.GetKeyDown(rFlap)) flaps -= 1;
+            flaps = Mathf.Clamp(flaps, minFlaps, maxFlaps);
         }
         
-
         #endregion
     }
 }
