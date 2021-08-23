@@ -11,13 +11,13 @@ namespace WheelApps {
         protected float brake;
         
         protected int flaps;
-        public int minFlaps = 0;
+        public int minFlaps;
         public int maxFlaps = 3;
 
         protected const string V = "Vertical";
         protected const string H = "Horizontal";
-        protected const string Y = "Yaw";
-        protected const string T = "Throttle";
+        private const string Y = "Yaw";
+        private const string T = "Throttle";
 
         public KeyCode brakeKey = KeyCode.Space;
         public KeyCode lFlap = KeyCode.F;
