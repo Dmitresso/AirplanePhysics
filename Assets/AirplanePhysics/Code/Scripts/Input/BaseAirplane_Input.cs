@@ -14,10 +14,10 @@ namespace WheelApps {
         public int minFlaps = 0;
         public int maxFlaps = 3;
 
-        private const string V = "Vertical";
-        private const string H = "Horizontal";
-        private const string Y = "Yaw";
-        private const string T = "Throttle";
+        protected const string V = "Vertical";
+        protected const string H = "Horizontal";
+        protected const string Y = "Yaw";
+        protected const string T = "Throttle";
 
         public KeyCode brakeKey = KeyCode.Space;
         public KeyCode lFlap = KeyCode.F;
@@ -49,7 +49,7 @@ namespace WheelApps {
         #endregion
 
         #region Custom Methods
-        private void HandleInput() {
+        protected virtual void HandleInput() {
             pitch = Input.GetAxis(V);
             roll = Input.GetAxis(H);
             yaw = Input.GetAxis(Y);
