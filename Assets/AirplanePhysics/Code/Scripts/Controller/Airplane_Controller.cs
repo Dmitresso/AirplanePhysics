@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace WheelApps {
     public class Airplane_Controller : BaseRigidbody_Controller {
@@ -8,7 +9,11 @@ namespace WheelApps {
         [Tooltip("Weight in LBS")]
         public float airplaneWeight = 1200f;
         public Transform centerOfMass;
+        [Header("Engines")]
+        public List<AirplaneEngine> engines = new List<AirplaneEngine>();
 
+        [Header("Wheels")]
+        public List<AirplaneWheel> wheels = new List<AirplaneWheel>();
         #endregion
         
         
@@ -26,6 +31,11 @@ namespace WheelApps {
             if (!rb) return;
             rb.mass = finalMass;
             if (centerOfMass) rb.centerOfMass = centerOfMass.localPosition;
+            if (wheels != null && wheels.Count > 0) {
+                foreach (var wheel in wheels) {
+                    
+                }
+            }
         }
 
         #endregion
@@ -42,7 +52,11 @@ namespace WheelApps {
         }
 
         private void HandleEngines() {
-            
+            if (engines != null && engines.Count > 0) {
+                foreach (var engine in engines) {
+                    
+                }
+            }
         }
 
         private void HandleAerodynamics() {
