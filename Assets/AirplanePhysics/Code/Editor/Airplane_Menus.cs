@@ -7,7 +7,7 @@ namespace WheelApps {
         public static void CreateNewAirplane() {
             GameObject currentSelected = Selection.activeGameObject;
             if (currentSelected) {
-                Airplane_Controller currentController = currentSelected.AddComponent<Airplane_Controller>();
+                AirplaneController currentController = currentSelected.AddComponent<AirplaneController>();
                 GameObject currentCOM = new GameObject("COM");
                 currentCOM.transform.SetParent(currentSelected.transform);
 

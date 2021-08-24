@@ -20,7 +20,9 @@ namespace WheelApps {
         public Vector3 CalculateForce(float throttle) {
             var finalThrottle = Mathf.Clamp01(throttle);
             finalThrottle = powerCurve.Evaluate(finalThrottle);
-            
+
+            if (propeller) propeller.HandlePropeller(finalThrottle * maxRPM);
+
             var finalPower = finalThrottle * maxForce;
             var finalForce = finalPower * transform.forward;
             

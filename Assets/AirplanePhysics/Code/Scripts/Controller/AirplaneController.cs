@@ -2,7 +2,7 @@
 using UnityEngine;
 
 namespace WheelApps {
-    public class Airplane_Controller : BaseRigidbodyController {
+    public class AirplaneController : BaseRigidbodyController {
         #region Variables
         [Header("Base Airplane Properties")]
         public BaseAirplaneInput input;
