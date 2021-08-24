@@ -4,9 +4,9 @@ namespace WheelApps {
     public class Airplane_Controller : BaseRigidbody_Controller {
         #region Variables
         [Header("Base Airplane Properties")]
-        public XboxAirplane_Input input;
+        public BaseAirplane_Input input;
         [Tooltip("Weight in LBS")]
-        public float airplaneWeight = 800f;
+        public float airplaneWeight = 1200f;
         public Transform centerOfMass;
 
         #endregion
