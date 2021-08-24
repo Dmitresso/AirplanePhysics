@@ -2,10 +2,10 @@
 using UnityEngine;
 
 namespace WheelApps {
-    public class Airplane_Controller : BaseRigidbody_Controller {
+    public class Airplane_Controller : BaseRigidbodyController {
         #region Variables
         [Header("Base Airplane Properties")]
-        public BaseAirplane_Input input;
+        public BaseAirplaneInput input;
         [Tooltip("Weight in LBS")]
         public float airplaneWeight = 1200f;
         public Transform centerOfMass;

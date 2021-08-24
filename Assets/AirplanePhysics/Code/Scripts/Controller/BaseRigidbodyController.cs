@@ -3,7 +3,7 @@
 namespace WheelApps {
     [RequireComponent(typeof(Rigidbody),
                      typeof(AudioSource))]
-    public class BaseRigidbody_Controller : MonoBehaviour {
+    public class BaseRigidbodyController : MonoBehaviour {
         #region Variables
         protected Rigidbody rb;
         protected AudioSource audioSource;

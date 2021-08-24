@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace WheelApps {
-    public class BaseAirplane_Input : MonoBehaviour {
+    public class BaseAirplaneInput : MonoBehaviour {
         #region Variables
         protected float pitch;
         protected float roll;

@@ -2,16 +2,16 @@
 using UnityEngine;
 
 namespace WheelApps {
-    [CustomEditor(typeof(BaseAirplane_Input))]
+    [CustomEditor(typeof(BaseAirplaneInput))]
     public class BaseAirplaneInput_Editor : Editor {
         #region Variables
-        private BaseAirplane_Input targetInput;
+        private BaseAirplaneInput targetInput;
         #endregion
 
         
         #region Builtin Methods
         private void OnEnable() {
-            targetInput = (BaseAirplane_Input) target;
+            targetInput = (BaseAirplaneInput) target;
         }
 
 

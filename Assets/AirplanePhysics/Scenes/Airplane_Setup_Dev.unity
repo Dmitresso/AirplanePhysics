@@ -1186,6 +1186,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxForce: 5000
   maxRPM: 2550
+  powerCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  propeller: {fileID: 1922825392805504}
 --- !u!1 &1911896709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,6 +1307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f884504818549c6873ce2036e45874d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  audioSource: {fileID: 0}
   input: {fileID: 2124795056}
   airplaneWeight: 1200
   centerOfMass: {fileID: 1911896710}
@@ -1303,6 +1330,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf6048930289b84f9be85bddb89bf69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pitch: 0
+  roll: 0
+  yaw: 0
+  throttle: 0
+  brake: 0
+  flaps: 0
   minFlaps: 0
   maxFlaps: 3
   brakeKey: 32
@@ -1404,6 +1437,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1922825392805503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1949133758072188178, guid: f0de258a0db275148b09e3fe3ed6677c, type: 3}
+  m_PrefabInstance: {fileID: 1948477677717273453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1922825392805504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922825392805503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a106d0f01c04448eb6035a67a7183f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4000009424396785 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1946777571899955868, guid: f0de258a0db275148b09e3fe3ed6677c, type: 3}
