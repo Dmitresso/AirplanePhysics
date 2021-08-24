@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace WheelApps {
     public class BaseAirplane_Input : MonoBehaviour {
-
         #region Variables
         protected float pitch;
         protected float roll;
@@ -13,16 +12,22 @@ namespace WheelApps {
         protected int flaps;
         public int minFlaps;
         public int maxFlaps = 3;
-
-        protected const string V = "Vertical";
-        protected const string H = "Horizontal";
-        private const string Y = "Yaw";
-        private const string T = "Throttle";
-
+        
         public KeyCode brakeKey = KeyCode.Space;
         public KeyCode lFlap = KeyCode.F;
         public KeyCode rFlap = KeyCode.G;
         #endregion
+
+        
+
+        #region Constants
+        protected const string V = "Vertical";
+        protected const string H = "Horizontal";
+        private const string Y = "Yaw";
+        private const string T = "Throttle";
+        #endregion
+        
+        
 
         #region Properties
         public float Pitch => pitch;

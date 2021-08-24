@@ -44,6 +44,7 @@ namespace WheelApps {
         
         #region Custom Methods
         protected override void HandlePhysics() {
+            if (!input) return; 
             HandleEngines();
             HandleAerodynamics();
             HandleSteering();
@@ -52,11 +53,8 @@ namespace WheelApps {
         }
 
         private void HandleEngines() {
-            if (engines != null && engines.Count > 0) {
-                foreach (var engine in engines) {
-                    
-                }
-            }
+            if (engines == null || engines.Count <= 0) return;
+            foreach (var engine in engines) rb.AddForce(engine.CalculateForce(input.Throttle));
         }
 
         private void HandleAerodynamics() {
