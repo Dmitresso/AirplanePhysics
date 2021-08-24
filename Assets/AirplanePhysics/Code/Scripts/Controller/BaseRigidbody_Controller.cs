@@ -5,15 +5,14 @@ namespace WheelApps {
                      typeof(AudioSource))]
     public class BaseRigidbody_Controller : MonoBehaviour {
         #region Variables
-        private Rigidbody rb;
-        private AudioSource audioSource;
-
+        protected Rigidbody rb;
+        protected AudioSource audioSource;
         #endregion
 
         
         
         #region Builtin Methods
-        private void Start() {
+        public virtual void Start() {
             rb = GetComponent<Rigidbody>();
             audioSource = GetComponent<AudioSource>();
             if (audioSource) audioSource.playOnAwake = false;

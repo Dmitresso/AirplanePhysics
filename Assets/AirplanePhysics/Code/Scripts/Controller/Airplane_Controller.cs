@@ -7,7 +7,26 @@ namespace WheelApps {
         public XboxAirplane_Input input;
         [Tooltip("Weight in LBS")]
         public float airplaneWeight = 800f;
-        public Transform centerOfGravity;
+        public Transform centerOfMass;
+
+        #endregion
+        
+        
+        
+        #region Constants
+        private const float poundsToKillos = 0.453592f; 
+        #endregion
+        
+        
+        
+        #region Builtin Methods
+        public override void Start() {
+            base.Start();
+            var finalMass = airplaneWeight * poundsToKillos;
+            if (!rb) return;
+            rb.mass = finalMass;
+            if (centerOfMass) rb.centerOfMass = centerOfMass.localPosition;
+        }
 
         #endregion
         
