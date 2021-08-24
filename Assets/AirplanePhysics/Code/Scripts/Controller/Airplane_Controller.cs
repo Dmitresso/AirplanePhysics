@@ -32,9 +32,7 @@ namespace WheelApps {
             rb.mass = finalMass;
             if (centerOfMass) rb.centerOfMass = centerOfMass.localPosition;
             if (wheels != null && wheels.Count > 0) {
-                foreach (var wheel in wheels) {
-                    
-                }
+                foreach (var wheel in wheels) wheel.Init();
             }
         }
 
