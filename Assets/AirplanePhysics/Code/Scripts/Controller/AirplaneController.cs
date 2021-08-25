@@ -2,13 +2,17 @@
 using UnityEngine;
 
 namespace WheelApps {
+    [RequireComponent(typeof(AirplaneCharacteristics))]
     public class AirplaneController : BaseRigidbodyController {
         #region Variables
         [Header("Base Airplane Properties")]
         public BaseAirplaneInput input;
+        public AirplaneCharacteristics characteristics;
+        
         [Tooltip("Weight in LBS")]
         public float airplaneWeight = 1200f;
         public Transform centerOfMass;
+        
         [Header("Engines")]
         public List<AirplaneEngine> engines = new List<AirplaneEngine>();
 
@@ -28,12 +32,16 @@ namespace WheelApps {
         public override void Start() {
             base.Start();
             var finalMass = airplaneWeight * poundsToKillos;
-            if (!rb) return;
-            rb.mass = finalMass;
-            if (centerOfMass) rb.centerOfMass = centerOfMass.localPosition;
+
             if (wheels != null && wheels.Count > 0) {
                 foreach (var wheel in wheels) wheel.Init();
             }
+            
+            if (!rb) return;
+            rb.mass = finalMass;
+            if (centerOfMass) rb.centerOfMass = centerOfMass.localPosition;
+            characteristics = GetComponent<AirplaneCharacteristics>();
+            if (characteristics) characteristics.Init(rb);
         }
 
         #endregion
@@ -44,7 +52,7 @@ namespace WheelApps {
         protected override void HandlePhysics() {
             if (!input) return; 
             HandleEngines();
-            HandleAerodynamics();
+            HandleCharacteristics();
             HandleSteering();
             HandleBrakes();
             HandleAltitude();
@@ -55,8 +63,8 @@ namespace WheelApps {
             foreach (var engine in engines) rb.AddForce(engine.CalculateForce(input.Throttle));
         }
 
-        private void HandleAerodynamics() {
-            
+        private void HandleCharacteristics() {
+            if (characteristics) characteristics.Update();
         }
 
         private void HandleSteering() {
