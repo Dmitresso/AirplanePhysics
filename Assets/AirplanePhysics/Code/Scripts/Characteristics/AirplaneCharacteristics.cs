@@ -23,8 +23,8 @@ namespace WheelApps {
         private float startAngularDrag;
 
         private float maxMPS;
-        
         private float normalizeMPH;
+        private float angleOfAttack;
         #endregion
 
 
@@ -69,9 +69,12 @@ namespace WheelApps {
         }
 
         private void CalculateLift() {
+            angleOfAttack = Vector3.Dot(rb.velocity.normalized, transform.forward);
+            angleOfAttack *= angleOfAttack;
+            
             var liftDirection = transform.up;
             var liftPower = liftCurve.Evaluate(normalizeMPH) * maxLiftPower;
-            var finalLiftForce = liftDirection * liftPower;
+            var finalLiftForce = liftDirection * liftPower * angleOfAttack;
             rb.AddForce(finalLiftForce);
         }
 
