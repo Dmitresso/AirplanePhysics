@@ -1386,8 +1386,8 @@ Rigidbody:
   m_GameObject: {fileID: 2124795052}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.1
-  m_AngularDrag: 2
+  m_Drag: 0.01
+  m_AngularDrag: 0.01
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1557,6 +1557,15 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
+      time: 0.18060549
+      value: 0.69725794
+      inSlope: 1.3560426
+      outSlope: 1.3560426
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 1
       inSlope: 0
@@ -1568,6 +1577,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  dragFactor: 0.01
 --- !u!1 &1146026153879885
 GameObject:
   m_ObjectHideFlags: 0

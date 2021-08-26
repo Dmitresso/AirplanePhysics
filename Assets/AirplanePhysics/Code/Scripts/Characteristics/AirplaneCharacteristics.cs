@@ -11,8 +11,12 @@ namespace WheelApps {
         public float maxMPH = 110f;
 
         [Header("Lift Properties")]
-        public float maxLiftPower = 800f;
+        public float maxLiftPower = 4000f;
         public AnimationCurve liftCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+        
+        [Header("Drag Properties")]
+        public float dragFactor = 0.01f;
+        
         
         private Rigidbody rb;
         private float startDrag;
@@ -72,7 +76,11 @@ namespace WheelApps {
         }
 
         private void CalculateDrag() {
-            
+            var speedDrag = forwardSpeed * dragFactor;
+            var finalDrag = startDrag + speedDrag;
+
+            rb.drag = finalDrag;
+            rb.angularDrag = startAngularDrag * forwardSpeed;
         }
         #endregion
     }
