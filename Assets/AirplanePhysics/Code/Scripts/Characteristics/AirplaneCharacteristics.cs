@@ -16,8 +16,9 @@ namespace WheelApps {
         public float dragFactor = 0.01f;
 
         [Header("Control Properties")]
-        public float pitchSpeed = 10f;
-        public float rollSpeed = 10f;
+        public float pitchSpeed = 1000f;
+        public float rollSpeed = 1000f;
+        public float yawSpeed = 1000f;
         
 
         private BaseAirplaneInput input;
@@ -64,6 +65,7 @@ namespace WheelApps {
 
             HandlePitch();
             HandleRoll();
+            HandleYaw();
             HandleRBTransform();
         }
 
@@ -114,6 +116,11 @@ namespace WheelApps {
 
             var rollTorque = - input.Roll * rollSpeed * transform.forward;
             rb.AddTorque(rollTorque);
+        }
+
+        private void HandleYaw() {
+            var yawTorque = input.Yaw * yawSpeed * transform.up;
+            rb.AddTorque(yawTorque);
         }
         
         private void HandleRBTransform() {

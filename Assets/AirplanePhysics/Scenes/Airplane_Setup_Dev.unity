@@ -1580,6 +1580,7 @@ MonoBehaviour:
   dragFactor: 0.01
   pitchSpeed: 2000
   rollSpeed: 1500
+  yawSpeed: 1500
 --- !u!1 &1146026153879885
 GameObject:
   m_ObjectHideFlags: 0
