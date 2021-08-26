@@ -41,7 +41,7 @@ namespace WheelApps {
             rb.mass = finalMass;
             if (centerOfMass) rb.centerOfMass = centerOfMass.localPosition;
             characteristics = GetComponent<AirplaneCharacteristics>();
-            if (characteristics) characteristics.Init(rb);
+            if (characteristics) characteristics.Init(rb, input);
         }
 
         #endregion

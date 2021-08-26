@@ -1,5 +1,6 @@
 ﻿
 
+using System;
 using UnityEngine;
 
 namespace WheelApps {
@@ -16,8 +17,13 @@ namespace WheelApps {
         
         [Header("Drag Properties")]
         public float dragFactor = 0.01f;
+
+        [Header("Control Properties")]
+        public float pitchSpeed = 10f;
+        public float rollSpeed = 10f;
         
-        
+
+        private BaseAirplaneInput input;
         private Rigidbody rb;
         private float startDrag;
         private float startAngularDrag;
@@ -25,6 +31,7 @@ namespace WheelApps {
         private float maxMPS;
         private float normalizeMPH;
         private float angleOfAttack;
+        private float pitchAngle;
         #endregion
 
 
@@ -36,18 +43,18 @@ namespace WheelApps {
         
 
         #region Builtin Methods
-
-        
-
         #endregion
 
 
 
         #region Custom Methods
-        public void Init(Rigidbody rb) {
+        public void Init(Rigidbody rb, BaseAirplaneInput input) {
             this.rb = rb;
             startDrag = rb.drag;
             startAngularDrag = rb.angularDrag;
+
+            this.input = input;
+            
             maxMPS = maxMPH / mpsToMph;
         }
 
@@ -56,6 +63,8 @@ namespace WheelApps {
             CalculateForwardSpeed();
             CalculateLift();
             CalculateDrag();
+
+            HandlePitch();
             HandleRBTransform();
         }
 
@@ -87,6 +96,15 @@ namespace WheelApps {
             rb.angularDrag = startAngularDrag * forwardSpeed;
         }
 
+        private void HandlePitch() {
+            var flatForward = transform.forward;
+            flatForward.y = 0f;
+            pitchAngle = Vector3.Angle(transform.forward, flatForward);
+
+            var pitchTorque = input.Pitch * pitchSpeed * transform.right;
+            rb.AddTorque(pitchTorque);
+        }
+        
         private void HandleRBTransform() {
             if (!(rb.velocity.magnitude > 1f)) return;
             

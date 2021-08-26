@@ -1387,7 +1387,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0.01
-  m_AngularDrag: 0.1
+  m_AngularDrag: 0.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1578,6 +1578,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   dragFactor: 0.01
+  pitchSpeed: 2000
+  rollSpeed: 1500
 --- !u!1 &1146026153879885
 GameObject:
   m_ObjectHideFlags: 0
