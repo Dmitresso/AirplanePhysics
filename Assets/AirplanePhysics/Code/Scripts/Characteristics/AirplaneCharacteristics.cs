@@ -56,6 +56,7 @@ namespace WheelApps {
             CalculateForwardSpeed();
             CalculateLift();
             CalculateDrag();
+            HandleRBTransform();
         }
 
         private void CalculateForwardSpeed() {
@@ -84,6 +85,16 @@ namespace WheelApps {
 
             rb.drag = finalDrag;
             rb.angularDrag = startAngularDrag * forwardSpeed;
+        }
+
+        private void HandleRBTransform() {
+            if (!(rb.velocity.magnitude > 1f)) return;
+            
+            var updatedVelocity = Vector3.Lerp(rb.velocity, transform.forward * forwardSpeed, forwardSpeed * angleOfAttack * Time.deltaTime);
+            rb.velocity = updatedVelocity;
+            
+            var updatedRotation = Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(rb.velocity.normalized, transform.up), Time.deltaTime);
+            rb.MoveRotation(updatedRotation);
         }
         #endregion
     }
