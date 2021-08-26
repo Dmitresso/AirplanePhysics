@@ -1,7 +1,4 @@
-﻿
-
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace WheelApps {
     public class AirplaneCharacteristics : MonoBehaviour {
@@ -32,6 +29,7 @@ namespace WheelApps {
         private float normalizeMPH;
         private float angleOfAttack;
         private float pitchAngle;
+        private float rollAngle;
         #endregion
 
 
@@ -65,6 +63,7 @@ namespace WheelApps {
             CalculateDrag();
 
             HandlePitch();
+            HandleRoll();
             HandleRBTransform();
         }
 
@@ -99,10 +98,22 @@ namespace WheelApps {
         private void HandlePitch() {
             var flatForward = transform.forward;
             flatForward.y = 0f;
+            flatForward = flatForward.normalized;
             pitchAngle = Vector3.Angle(transform.forward, flatForward);
 
             var pitchTorque = input.Pitch * pitchSpeed * transform.right;
             rb.AddTorque(pitchTorque);
+        }
+
+
+        private void HandleRoll() {
+            var flatRight = transform.right;
+            flatRight.y = 0f;
+            flatRight = flatRight.normalized;
+            rollAngle = Vector3.Angle(transform.right, flatRight);
+
+            var rollTorque = - input.Roll * rollSpeed * transform.forward;
+            rb.AddTorque(rollTorque);
         }
         
         private void HandleRBTransform() {
