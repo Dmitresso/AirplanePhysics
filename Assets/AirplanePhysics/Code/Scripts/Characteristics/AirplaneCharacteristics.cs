@@ -46,7 +46,7 @@ namespace WheelApps {
 
         private void CalculateForwardSpeed() {
             var localVelocity = transform.InverseTransformDirection(rb.velocity);
-            forwardSpeed = localVelocity.z;
+            forwardSpeed = Mathf.Max(0, localVelocity.z);
             mph = forwardSpeed * mpsToMph;
         }
 

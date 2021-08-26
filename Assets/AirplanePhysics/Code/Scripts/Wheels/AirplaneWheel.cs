@@ -23,7 +23,7 @@ namespace WheelApps {
 
         #region Custom Methods
         public void Init() {
-            if (collider) collider.motorTorque = 0.0000001f;
+            if (collider) collider.motorTorque = 0.000000001f;
         }
         #endregion
     }
