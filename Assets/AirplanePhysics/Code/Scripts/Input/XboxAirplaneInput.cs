@@ -2,6 +2,12 @@ using UnityEngine;
 
 namespace WheelApps {
     public class XboxAirplaneInput : BaseAirplaneInput {
+        #region Variables
+        public float throttleSpeed = 0.1f;
+        #endregion
+        
+        
+        
         #region Constants
         private const string Fire1 = "Fire1";
         private const string Y = "X_RH_Stick";
@@ -11,11 +17,14 @@ namespace WheelApps {
         #endregion
 
         
+        
+        #region Custom Methods
         protected override void HandleInput() {
             pitch = Input.GetAxis(V);
             roll = Input.GetAxis(H);
             yaw = Input.GetAxis(Y);
             throttle = Input.GetAxis(T);
+            HandleStickyThrottle();
 
             brake = Input.GetAxis(Fire1);
 
@@ -23,5 +32,11 @@ namespace WheelApps {
             if (Input.GetKeyDown(XLB)) flaps -= 1;
             flaps = Mathf.Clamp(flaps, minFlaps, maxFlaps);
         }
+
+        public void HandleStickyThrottle() {
+            stickyThrottle += throttle * throttleSpeed * Time.deltaTime;
+            stickyThrottle = Mathf.Clamp01(stickyThrottle);
+        }
+        #endregion
     }
 }

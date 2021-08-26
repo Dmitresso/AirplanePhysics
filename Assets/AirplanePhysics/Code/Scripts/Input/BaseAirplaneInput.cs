@@ -13,6 +13,9 @@ namespace WheelApps {
         public int minFlaps;
         public int maxFlaps = 3;
         
+        protected float stickyThrottle;
+        public float StickyThrottle => stickyThrottle;
+        
         public KeyCode brakeKey = KeyCode.Space;
         public KeyCode lFlap = KeyCode.F;
         public KeyCode rFlap = KeyCode.G;
