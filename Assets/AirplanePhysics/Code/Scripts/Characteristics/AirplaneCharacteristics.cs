@@ -7,9 +7,10 @@ namespace WheelApps {
         public float forwardSpeed;
         public float mph;
         public float maxMPH = 110f;
+        public float rbLerpSpeed = 0.03f;
 
         [Header("Lift Properties")]
-        public float maxLiftPower = 4000f;
+        public float maxLiftPower = 5000f;
         public AnimationCurve liftCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
         
         [Header("Drag Properties")]
@@ -66,9 +67,11 @@ namespace WheelApps {
             HandlePitch();
             HandleRoll();
             HandleYaw();
+            HandleBanking();
             HandleRBTransform();
         }
 
+        
         private void CalculateForwardSpeed() {
             var localVelocity = transform.InverseTransformDirection(rb.velocity);
             forwardSpeed = Mathf.Max(0, localVelocity.z);
@@ -79,6 +82,7 @@ namespace WheelApps {
             normalizeMPH = Mathf.InverseLerp(0, maxMPH, mph);
         }
 
+        
         private void CalculateLift() {
             angleOfAttack = Vector3.Dot(rb.velocity.normalized, transform.forward);
             angleOfAttack *= angleOfAttack;
@@ -89,6 +93,7 @@ namespace WheelApps {
             rb.AddForce(finalLiftForce);
         }
 
+        
         private void CalculateDrag() {
             var speedDrag = forwardSpeed * dragFactor;
             var finalDrag = startDrag + speedDrag;
@@ -97,6 +102,7 @@ namespace WheelApps {
             rb.angularDrag = startAngularDrag * forwardSpeed;
         }
 
+        
         private void HandlePitch() {
             var flatForward = transform.forward;
             flatForward.y = 0f;
@@ -118,18 +124,28 @@ namespace WheelApps {
             rb.AddTorque(rollTorque);
         }
 
+        
         private void HandleYaw() {
             var yawTorque = input.Yaw * yawSpeed * transform.up;
             rb.AddTorque(yawTorque);
         }
+
+
+        private void HandleBanking() {
+            var bankSide = Mathf.InverseLerp(-90f, 90f, rollAngle);
+            var bankAmount = Mathf.Lerp(-1, 1, bankSide);
+            var bankTorque = bankAmount * rollSpeed * transform.up;
+            rb.AddTorque(bankTorque);
+        }
+        
         
         private void HandleRBTransform() {
             if (!(rb.velocity.magnitude > 1f)) return;
             
-            var updatedVelocity = Vector3.Lerp(rb.velocity, transform.forward * forwardSpeed, forwardSpeed * angleOfAttack * Time.deltaTime);
+            var updatedVelocity = Vector3.Lerp(rb.velocity, transform.forward * forwardSpeed, forwardSpeed * angleOfAttack * rbLerpSpeed * Time.deltaTime);
             rb.velocity = updatedVelocity;
             
-            var updatedRotation = Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(rb.velocity.normalized, transform.up), Time.deltaTime);
+            var updatedRotation = Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(rb.velocity.normalized, transform.up), rbLerpSpeed * Time.deltaTime);
             rb.MoveRotation(updatedRotation);
         }
         #endregion
