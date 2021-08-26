@@ -8,6 +8,9 @@ namespace WheelApps {
         [Header("Characteristics Properties")]
         public float forwardSpeed;
         public float mph;
+
+        [Header("Lift Properties")]
+        public float maxLiftPower = 600f;
         
         private Rigidbody rb;
         private float startDrag;
@@ -51,7 +54,10 @@ namespace WheelApps {
         }
 
         private void CalculateLift() {
-            
+            var liftDirection = transform.up;
+            var liftPower = forwardSpeed * maxLiftPower;
+            var finalLiftForce = liftDirection * liftPower;
+            rb.AddForce(finalLiftForce);
         }
 
         private void CalculateDrag() {
