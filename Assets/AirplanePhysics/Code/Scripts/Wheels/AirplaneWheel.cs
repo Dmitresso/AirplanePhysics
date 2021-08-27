@@ -1,12 +1,16 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace WheelApps {
     [RequireComponent(typeof(WheelCollider))]
     public class AirplaneWheel : MonoBehaviour {
         #region Variables
-        private WheelCollider collider;
 
+        [Header("Wheel Properties")]
+        public Transform wheelGraphic;
+        
+        private WheelCollider collider;
+        private Vector3 worldPosition;
+        private Quaternion worldRotation;
         #endregion
 
 
@@ -24,6 +28,14 @@ namespace WheelApps {
         #region Custom Methods
         public void Init() {
             if (collider) collider.motorTorque = 0.000000001f;
+        }
+
+        public void HandleWheel(BaseAirplaneInput input) {
+            if (!collider) return;
+            collider.GetWorldPose(out worldPosition, out worldRotation);
+            if (!wheelGraphic) return;
+            wheelGraphic.position = worldPosition;
+            wheelGraphic.rotation = worldRotation;
         }
         #endregion
     }

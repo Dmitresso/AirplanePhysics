@@ -57,8 +57,7 @@ namespace WheelApps {
             HandleEngines();
             HandleCharacteristics();
             HandleControlSurfaces();
-            HandleSteering();
-            HandleBrakes();
+            HandleWheel();
             HandleAltitude();
         }
 
@@ -75,22 +74,18 @@ namespace WheelApps {
 
 
         private void HandleControlSurfaces() {
-            if (controlSurfaces.Count < 0) return;
+            if (controlSurfaces.Count <= 0) return;
             foreach (var cs in controlSurfaces) {
                 cs.HandleControlSurface(input);
             }
         }
-        
-        
-        private void HandleSteering() {
-            
-        }
 
-        
-        private void HandleBrakes() {
-            
-        }
 
+        private void HandleWheel() {
+            if (wheels.Count <= 0) return;
+            foreach (var wheel in wheels) wheel.HandleWheel(input);
+        }
+        
         
         private void HandleAltitude() {
             

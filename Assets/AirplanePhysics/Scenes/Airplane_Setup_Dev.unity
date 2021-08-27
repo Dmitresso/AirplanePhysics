@@ -153,7 +153,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 362657633}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!146 &6427714
 WheelCollider:
@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5309935cdfc24d7b881abae9a7f9ebd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheelGraphic: {fileID: 4203838520975917}
 --- !u!1 &85129187
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,9 +314,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1514278832}
   - {fileID: 1640434886}
   - {fileID: 6427713}
-  - {fileID: 1514278832}
   m_Father: {fileID: 532661841}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1151,7 +1152,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 362657633}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!146 &1514278833
 WheelCollider:
@@ -1195,6 +1196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5309935cdfc24d7b881abae9a7f9ebd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheelGraphic: {fileID: 4831460720297145}
 --- !u!1 &1583700426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,7 +1275,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 362657633}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!146 &1640434887
 WheelCollider:
@@ -1317,6 +1319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5309935cdfc24d7b881abae9a7f9ebd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheelGraphic: {fileID: 4299353811163103}
 --- !u!1 &1702944909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,9 +1660,9 @@ MonoBehaviour:
   engines:
   - {fileID: 1894477950}
   wheels:
+  - {fileID: 1514278834}
   - {fileID: 1640434888}
   - {fileID: 6427715}
-  - {fileID: 1514278834}
   controlSurfaces:
   - {fileID: 1583700428}
   - {fileID: 1463665163}
