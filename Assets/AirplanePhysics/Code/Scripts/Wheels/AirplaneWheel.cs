@@ -9,11 +9,15 @@ namespace WheelApps {
         public Transform wheelGraphic;
         public bool isBraking;
         public float brakePower = 5f;
-
+        public bool isSteering;
+        public float steeringAngle = 20f;
+        public float steerSmoothSpeed = 8f;
+        
         private WheelCollider collider;
         private Vector3 worldPosition;
         private Quaternion worldRotation;
         private float finalBrakeForce;
+        private float finalSteerAngle;
         #endregion
 
 
@@ -41,13 +45,20 @@ namespace WheelApps {
                 wheelGraphic.rotation = worldRotation;                
             }
 
-            if (input.Brake > 0.1f) {
-                finalBrakeForce = Mathf.Lerp(finalBrakeForce, input.Brake * brakePower, Time.deltaTime);
-                collider.brakeTorque = finalBrakeForce;
+            if (isBraking) {
+                if (input.Brake > 0.1f) {
+                    finalBrakeForce = Mathf.Lerp(finalBrakeForce, input.Brake * brakePower, Time.deltaTime);
+                    collider.brakeTorque = finalBrakeForce;
+                }
+                else {
+                    collider.brakeTorque = 0f;
+                    collider.motorTorque = 0.000000001f;
+                }
             }
-            else {
-                collider.brakeTorque = 0f;
-                collider.motorTorque = 0.000000001f;
+
+            if (isSteering) {
+                finalSteerAngle = Mathf.Lerp(finalSteerAngle, - input.Yaw * steeringAngle, steerSmoothSpeed * Time.deltaTime);
+                collider.steerAngle = finalSteerAngle;
             }
         }
         #endregion

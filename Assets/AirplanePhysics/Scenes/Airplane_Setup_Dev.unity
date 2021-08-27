@@ -200,6 +200,8 @@ MonoBehaviour:
   wheelGraphic: {fileID: 4203838520975917}
   isBraking: 1
   brakePower: 5
+  isSteering: 0
+  steeringAngle: 20
 --- !u!1 &85129187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,6 +1203,8 @@ MonoBehaviour:
   wheelGraphic: {fileID: 4831460720297145}
   isBraking: 0
   brakePower: 0
+  isSteering: 1
+  steeringAngle: 20
 --- !u!1 &1583700426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1330,8 @@ MonoBehaviour:
   wheelGraphic: {fileID: 4299353811163103}
   isBraking: 1
   brakePower: 5
+  isSteering: 0
+  steeringAngle: 20
 --- !u!1 &1702944909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,18 +1816,18 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
