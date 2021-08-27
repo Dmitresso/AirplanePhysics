@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 namespace WheelApps {
+    [RequireComponent(typeof(Camera))]
     public class BasicFollowCamera : MonoBehaviour {
         #region Variables
         [Header("Basic Follow Camera Properties")]
@@ -9,12 +10,18 @@ namespace WheelApps {
         public float height = 6f;
         public float smoothSpeed = 0.5f;
 
+        protected float originHeight;
+        
         private Vector3 smoothVelocity;
         #endregion
 
 
         
         #region Builtin Methods
+        private void Start() {
+            originHeight = height;
+        }
+
         private void FixedUpdate() {
             if(target) HandleCamera();
         }

@@ -692,12 +692,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c066e45ea9fd4d819908e3a855073373, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d1772ec9dd5496b8e09d4df03b24149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2124795053}
-  distance: 10
-  height: 6
+  distance: 8
+  height: 2
+  smoothSpeed: 0.5
+  minHeightFromGround: 2
 --- !u!1 &973292703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,8 +1172,8 @@ GameObject:
   - component: {fileID: 1731011852}
   - component: {fileID: 1731011851}
   m_Layer: 0
-  m_Name: Plane
-  m_TagString: Untagged
+  m_Name: Ground
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1567,17 +1569,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.18060549
-      value: 0.69725794
-      inSlope: 1.3560426
-      outSlope: 1.3560426
+      time: 0.1733437
+      value: 0.6418305
+      inSlope: 1.3168814
+      outSlope: 1.3168814
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -1595,9 +1597,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   dragFactor: 0.0004
-  pitchSpeed: 1000
-  rollSpeed: 1000
-  yawSpeed: 1000
+  pitchSpeed: 1500
+  rollSpeed: 1550
+  yawSpeed: 1500
 --- !u!1 &1146026153879885
 GameObject:
   m_ObjectHideFlags: 0
