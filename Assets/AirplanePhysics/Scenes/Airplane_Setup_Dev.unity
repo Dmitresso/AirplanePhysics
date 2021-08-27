@@ -177,7 +177,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 0.75
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -198,6 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelGraphic: {fileID: 4203838520975917}
+  isBraking: 1
+  brakePower: 5
 --- !u!1 &85129187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,7 +1178,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 0.75
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -1197,6 +1199,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelGraphic: {fileID: 4831460720297145}
+  isBraking: 0
+  brakePower: 0
 --- !u!1 &1583700426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,7 +1303,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 0.75
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -1320,6 +1324,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelGraphic: {fileID: 4299353811163103}
+  isBraking: 1
+  brakePower: 5
 --- !u!1 &1702944909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,15 +1816,6 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
-    - serializedVersion: 3
-      time: 0.1733437
-      value: 0.6418305
-      inSlope: 1.3168814
-      outSlope: 1.3168814
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
