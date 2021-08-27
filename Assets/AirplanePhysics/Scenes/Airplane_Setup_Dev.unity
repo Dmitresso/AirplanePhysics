@@ -1008,9 +1008,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   maxAngle: 30
-  axis: {x: 1, y: 0, z: 0}
+  axis: {x: 0, y: -1, z: 0}
   controlSurfaceGraphic: {fileID: 4023120349387261}
-  smoothSpeed: 0
+  smoothSpeed: 4
 --- !u!4 &1463665164
 Transform:
   m_ObjectHideFlags: 0
