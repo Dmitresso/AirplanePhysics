@@ -1712,6 +1712,7 @@ GameObject:
   - component: {fileID: 2124795056}
   - component: {fileID: 2124795058}
   - component: {fileID: 2124795055}
+  - component: {fileID: 2124795059}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1949,6 +1950,18 @@ MonoBehaviour:
   pitchSpeed: 1500
   rollSpeed: 1550
   yawSpeed: 1500
+--- !u!114 &2124795059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124795052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a29839b06ad46a8af5f89a1dd1c1ad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1146026153879885
 GameObject:
   m_ObjectHideFlags: 0
