@@ -1006,6 +1006,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deed2a41bdf04f9098a09687d85f00f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  maxAngle: 30
+  axis: {x: 1, y: 0, z: 0}
+  controlSurfaceGraphic: {fileID: 4023120349387261}
+  smoothSpeed: 0
 --- !u!4 &1463665164
 Transform:
   m_ObjectHideFlags: 0
@@ -1137,6 +1142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deed2a41bdf04f9098a09687d85f00f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
+  maxAngle: 30
+  axis: {x: -1, y: 0, z: 0}
+  controlSurfaceGraphic: {fileID: 4542245458886863}
+  smoothSpeed: 4
 --- !u!1 &1640434885
 GameObject:
   m_ObjectHideFlags: 0
