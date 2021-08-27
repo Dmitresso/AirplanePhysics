@@ -4,8 +4,6 @@ namespace WheelApps {
     public class AirplaneCharacteristics : MonoBehaviour {
         #region Variables
         [Header("Characteristics Properties")]
-        public float forwardSpeed;
-        public float mph;
         public float maxMPH = 110f;
         public float rbLerpSpeed = 0.03f;
 
@@ -14,7 +12,8 @@ namespace WheelApps {
         public AnimationCurve liftCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
         
         [Header("Drag Properties")]
-        public float dragFactor = 0.01f;
+        public float dragFactor = 0.0004f;
+        public float flapDragFactor = 0.0004f;
 
         [Header("Control Properties")]
         public float pitchSpeed = 1000f;
@@ -22,11 +21,14 @@ namespace WheelApps {
         public float yawSpeed = 1000f;
         
 
+        
         private BaseAirplaneInput input;
         private Rigidbody rb;
         private float startDrag;
         private float startAngularDrag;
 
+        private float forwardSpeed;
+        private float mph;  
         private float maxMPS;
         private float normalizeMPH;
         private float angleOfAttack;
@@ -96,7 +98,9 @@ namespace WheelApps {
         
         private void CalculateDrag() {
             var speedDrag = forwardSpeed * dragFactor;
-            var finalDrag = startDrag + speedDrag;
+            var flapDrag = input.Flaps * flapDragFactor;
+            
+            var finalDrag = startDrag + speedDrag + flapDrag;
 
             rb.drag = finalDrag;
             rb.angularDrag = startAngularDrag * forwardSpeed;
