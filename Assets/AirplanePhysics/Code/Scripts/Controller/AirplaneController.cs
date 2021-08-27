@@ -18,6 +18,9 @@ namespace WheelApps {
 
         [Header("Wheels")]
         public List<AirplaneWheel> wheels = new List<AirplaneWheel>();
+
+        [Header("Control Surfaces")]
+        public List<AirplaneControlSurface> controlSurfaces = new List<AirplaneControlSurface>();
         #endregion
         
         
@@ -53,28 +56,42 @@ namespace WheelApps {
             if (!input) return; 
             HandleEngines();
             HandleCharacteristics();
+            HandleControlSurfaces();
             HandleSteering();
             HandleBrakes();
             HandleAltitude();
         }
 
+        
         private void HandleEngines() {
             if (engines == null || engines.Count <= 0) return;
             foreach (var engine in engines) rb.AddForce(engine.CalculateForce(input.Throttle));
         }
 
+        
         private void HandleCharacteristics() {
             if (characteristics) characteristics.Update();
         }
 
+
+        private void HandleControlSurfaces() {
+            if (controlSurfaces.Count < 0) return;
+            foreach (var cs in controlSurfaces) {
+                cs.HandleControlSurface(input);
+            }
+        }
+        
+        
         private void HandleSteering() {
             
         }
 
+        
         private void HandleBrakes() {
             
         }
 
+        
         private void HandleAltitude() {
             
         }
