@@ -122,7 +122,7 @@ namespace WheelApps {
             var flatRight = transform.right;
             flatRight.y = 0f;
             flatRight = flatRight.normalized;
-            rollAngle = Vector3.Angle(transform.right, flatRight);
+            rollAngle = Vector3.SignedAngle(transform.right, flatRight, transform.forward);
 
             var rollTorque = - input.Roll * rollSpeed * transform.forward;
             rb.AddTorque(rollTorque);
@@ -144,7 +144,7 @@ namespace WheelApps {
         
         
         private void HandleRBTransform() {
-            if (!(rb.velocity.magnitude > 1f)) return;
+            if (rb.velocity.magnitude <= 1f) return;
             
             var updatedVelocity = Vector3.Lerp(rb.velocity, transform.forward * forwardSpeed, forwardSpeed * angleOfAttack * rbLerpSpeed * Time.deltaTime);
             rb.velocity = updatedVelocity;

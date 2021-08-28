@@ -1925,8 +1925,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.50012505
-      value: 0.8718365
+      time: 0.14140618
+      value: 0.75793725
       inSlope: 1.0016086
       outSlope: 1.0016086
       tangentMode: 0
@@ -1962,6 +1962,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a29839b06ad46a8af5f89a1dd1c1ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxGroundDistance: 3
+  liftForce: 100
+  maxSpeed: 15
 --- !u!1 &1146026153879885
 GameObject:
   m_ObjectHideFlags: 0

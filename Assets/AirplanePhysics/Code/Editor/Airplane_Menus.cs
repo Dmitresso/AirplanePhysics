@@ -1,18 +1,10 @@
 ﻿using UnityEditor;
-using UnityEngine;
 
 namespace WheelApps {
     public static class Airplane_Menus {
         [MenuItem("Airplane Tools/Create New Airplane")]
         public static void CreateNewAirplane() {
-            GameObject currentSelected = Selection.activeGameObject;
-            if (currentSelected) {
-                AirplaneController currentController = currentSelected.AddComponent<AirplaneController>();
-                GameObject currentCOM = new GameObject("COM");
-                currentCOM.transform.SetParent(currentSelected.transform);
-
-                currentController.centerOfMass = currentCOM.transform;
-            }
+            AirplaneSetupTools.BuildDefaultAirplane();
         }
     }
 }
