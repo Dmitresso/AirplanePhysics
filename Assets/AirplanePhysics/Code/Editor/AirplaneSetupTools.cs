@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace WheelApps {
     public static class AirplaneSetupTools {
@@ -28,9 +29,14 @@ namespace WheelApps {
                 var engine = engineGO.GetComponent<AirplaneEngine>();
                 controller.engines.Add(engine);
                 engineGO.transform.SetParent(rootGO.transform, false);
+
+                var assetPath = "Assets/AirplanePhysics/Art/Objects/Airplanes/Indie-Pixel_Airplane/IndiePixel_Airplane.fbx";
+                var defaultAirplane = (GameObject) AssetDatabase.LoadAssetAtPath(assetPath, typeof(GameObject));
+
+                if (defaultAirplane) GameObject.Instantiate(defaultAirplane, graphicsGRP.transform);
             }
 
-
+            Selection.activeGameObject = rootGO;
         }
     }
 }
