@@ -4,6 +4,8 @@ namespace WheelApps {
     public class AirplaneGroundEffect : MonoBehaviour {
         #region Variables
         public float maxGroundDistance = 3f;
+        public float liftForce = 100f;
+        public float maxSpeed = 15f;
         
         
         private Rigidbody rb;
@@ -29,7 +31,13 @@ namespace WheelApps {
             RaycastHit hit;
             if (!Physics.Raycast(transform.position, Vector3.down, out hit)) return;
             if (hit.transform.CompareTag(Tags.Ground) && hit.distance < maxGroundDistance) {
-                    
+                var currentSpeed = rb.velocity.magnitude;
+                var normalizedSpeed = currentSpeed / maxSpeed;
+                normalizedSpeed = Mathf.Clamp01(normalizedSpeed);
+                
+                var distance = maxGroundDistance - hit.distance;
+                var finalForce = liftForce * distance * normalizedSpeed;
+                rb.AddForce(Vector3.up * finalForce);
             }
         }
         #endregion
