@@ -22,7 +22,7 @@ namespace WheelApps {
             base.OnInspectorGUI();
 
             GUILayout.Space(15);
-            if (GUILayout.Button("Get Airplane Components", GUILayout.Height(35))) {
+            if (GUILayout.Button("Get Airplane Components", GUILayout.Height(20), GUILayout.Width(200))) {
                 targetController.engines.Clear();
                 targetController.wheels.Clear();
                 targetController.controlSurfaces.Clear();
@@ -32,6 +32,11 @@ namespace WheelApps {
                 targetController.controlSurfaces = FindAllControlSurfaces();
             }
             GUILayout.Space(15);
+
+            if (GUILayout.Button("Create Airplane Preset", GUILayout.Height(20), GUILayout.Width(200))) {
+                var path = EditorUtility.SaveFilePanel("Save Airplane Preset", "Assets", "New Airplane Preset", "asset");
+                SaveAirplanePreset(path);
+            }
         }
         #endregion
 
@@ -54,7 +59,17 @@ namespace WheelApps {
             var controlSurfaces = new List<AirplaneControlSurface>();
             if (targetController) controlSurfaces = targetController.transform.GetComponentsInChildren<AirplaneControlSurface>().ToList();
             return controlSurfaces;
-        } 
+        }
+
+        private void SaveAirplanePreset(string path) {
+            if (targetController && !string.IsNullOrEmpty(path)) {
+                var newPreset = CreateInstance<AirplanePreset>();
+                newPreset.airplaneWeight = targetController.airplaneWeight;
+                if (targetController.centerOfMass) newPreset.comPosition = targetController.centerOfMass.position;
+
+                AssetDatabase.CreateAsset(newPreset, path);
+            }
+        }
         #endregion
     }
 }

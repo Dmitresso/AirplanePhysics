@@ -16,9 +16,10 @@ namespace WheelApps {
         #region Builtin Methods
         private void OnGUI() {
             targetName = EditorGUILayout.TextField("Airplane Name:", targetName);
-            if (!GUILayout.Button("Build New Airplane")) return;
-            AirplaneSetupTools.BuildDefaultAirplane(targetName);
-            GetWindow<AirplaneSetupWindow>().Close();
+            if (GUILayout.Button("Build New Airplane") && !string.IsNullOrEmpty(targetName)) {
+                AirplaneSetupTools.BuildDefaultAirplane(targetName);
+                GetWindow<AirplaneSetupWindow>().Close();
+            }
         }
 
         #endregion
