@@ -61,13 +61,16 @@ namespace WheelApps {
             return controlSurfaces;
         }
 
-        private void SaveAirplanePreset(string path) {
-            if (targetController && !string.IsNullOrEmpty(path)) {
+        private void SaveAirplanePreset(string assetPath) {
+            if (targetController && !string.IsNullOrEmpty(assetPath)) {
+                var appPath = Application.dataPath;
+                var finalPath = "Assets/" + assetPath.Substring(appPath.Length);
+                
                 var newPreset = CreateInstance<AirplanePreset>();
                 newPreset.airplaneWeight = targetController.airplaneWeight;
                 if (targetController.centerOfMass) newPreset.comPosition = targetController.centerOfMass.position;
 
-                AssetDatabase.CreateAsset(newPreset, path);
+                AssetDatabase.CreateAsset(newPreset, finalPath);
             }
         }
         #endregion
