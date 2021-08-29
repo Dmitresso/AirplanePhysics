@@ -96,7 +96,7 @@ namespace WheelApps {
         private void GetPresetInfo() {
             if (!preset) return;
             airplaneWeight = preset.airplaneWeight;
-            centerOfMass.position = preset.comPosition;
+            centerOfMass.localPosition = preset.comPosition;
 
             if (!characteristics) return;
             characteristics.maxMPH = preset.maxMPH;

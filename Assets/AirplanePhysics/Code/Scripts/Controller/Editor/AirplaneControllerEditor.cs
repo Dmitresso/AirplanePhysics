@@ -68,7 +68,7 @@ namespace WheelApps {
                 
                 var newPreset = CreateInstance<AirplanePreset>();
                 newPreset.airplaneWeight = targetController.airplaneWeight;
-                if (targetController.centerOfMass) newPreset.comPosition = targetController.centerOfMass.position;
+                if (targetController.centerOfMass) newPreset.comPosition = targetController.centerOfMass.localPosition;
 
                 if (targetController.characteristics) {
                     newPreset.maxMPH = targetController.characteristics.maxMPH;

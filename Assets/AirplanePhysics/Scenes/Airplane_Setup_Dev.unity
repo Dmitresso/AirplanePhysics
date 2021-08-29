@@ -1767,6 +1767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f884504818549c6873ce2036e45874d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  preset: {fileID: 0}
   input: {fileID: 2124795056}
   characteristics: {fileID: 2124795058}
   airplaneWeight: 1200
