@@ -15,10 +15,13 @@ namespace WheelApps {
         
         protected float stickyThrottle;
         public float StickyThrottle => stickyThrottle;
-        
-        public KeyCode brakeKey = KeyCode.Space;
-        public KeyCode lFlap = KeyCode.F;
-        public KeyCode rFlap = KeyCode.G;
+
+        [SerializeField] private KeyCode cameraKey = KeyCode.C;
+        [SerializeField] private KeyCode brakeKey = KeyCode.Space;
+        [SerializeField] private KeyCode lFlap = KeyCode.F;
+        [SerializeField] private KeyCode rFlap = KeyCode.G;
+
+        protected bool cameraSwitch;
         #endregion
 
         
@@ -44,6 +47,8 @@ namespace WheelApps {
         public int Flaps => flaps;
 
         public float Brake => brake;
+        
+        public bool CameraSwitch => cameraSwitch;
         #endregion
         
         
@@ -65,8 +70,9 @@ namespace WheelApps {
             if (Input.GetKeyDown(lFlap)) flaps += 1;
             if (Input.GetKeyDown(rFlap)) flaps -= 1;
             flaps = Mathf.Clamp(flaps, minFlaps, maxFlaps);
+
+            cameraSwitch = Input.GetKeyDown(cameraKey);
         }
-        
         #endregion
     }
 }

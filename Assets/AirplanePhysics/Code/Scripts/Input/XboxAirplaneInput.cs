@@ -14,6 +14,7 @@ namespace WheelApps {
         private const string T = "X_RV_Stick";
         private const string XRB = "X_R_Bumper";
         private const string XLB = "X_L_Bumper";
+        private const string XYB = "X_Y_Bumper";
         #endregion
 
         
@@ -31,6 +32,8 @@ namespace WheelApps {
             if (Input.GetKeyDown(XRB)) flaps += 1;
             if (Input.GetKeyDown(XLB)) flaps -= 1;
             flaps = Mathf.Clamp(flaps, minFlaps, maxFlaps);
+
+            cameraSwitch = Input.GetButtonDown(XYB);
         }
 
         public void HandleStickyThrottle() {
