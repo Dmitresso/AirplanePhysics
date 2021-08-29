@@ -6,6 +6,7 @@ namespace WheelApps {
     public class AirplaneController : BaseRigidbodyController {
         #region Variables
         [Header("Base Airplane Properties")]
+        public AirplanePreset preset;
         public BaseAirplaneInput input;
         public AirplaneCharacteristics characteristics;
         
@@ -33,6 +34,8 @@ namespace WheelApps {
         
         #region Builtin Methods
         public override void Start() {
+            GetPresetInfo();
+            
             base.Start();
             var finalMass = airplaneWeight * poundsToKillos;
 
@@ -46,7 +49,6 @@ namespace WheelApps {
             characteristics = GetComponent<AirplaneCharacteristics>();
             if (characteristics) characteristics.Init(rb, input);
         }
-
         #endregion
         
         
@@ -89,6 +91,23 @@ namespace WheelApps {
         
         private void HandleAltitude() {
             
+        }
+
+        private void GetPresetInfo() {
+            if (!preset) return;
+            airplaneWeight = preset.airplaneWeight;
+            centerOfMass.position = preset.comPosition;
+
+            if (!characteristics) return;
+            characteristics.maxMPH = preset.maxMPH;
+            characteristics.rbLerpSpeed = preset.rbLerpSpeed;
+            characteristics.maxLiftPower = preset.maxLiftPower;
+            characteristics.liftCurve = preset.liftCurve;
+            characteristics.dragFactor = preset.dragFactor;
+            characteristics.flapDragFactor = preset.flapDragFactor;
+            characteristics.pitchSpeed = preset.pitchSpeed;
+            characteristics.rollSpeed = preset.rollSpeed;
+            characteristics.yawSpeed = preset.yawSpeed;
         }
         #endregion
     }
