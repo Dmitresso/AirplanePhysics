@@ -4,6 +4,7 @@ namespace WheelApps {
     public class AirplanePropeller : MonoBehaviour {
         #region Variables
         [Header("Propeller Properties")]
+        public float minRotationRPM = 30f;
         public float minQuadRPMs = 300f;
         public float minTextureSwap = 600f;
         public GameObject mainProp;
@@ -35,7 +36,8 @@ namespace WheelApps {
         #region Custom Methods
         public void HandlePropeller(float currentRPM) {
             // degrees per second
-            var dps = currentRPM * 360f / 60f * Time.deltaTime;
+            var dps = (currentRPM * 360f / 60f + minRotationRPM) * Time.deltaTime;
+            dps = Mathf.Clamp(dps, 0f, minRotationRPM);
             transform.Rotate(Vector3.forward, dps);
 
             if (mainProp && blurredProp) HandleSwapping(currentRPM);
