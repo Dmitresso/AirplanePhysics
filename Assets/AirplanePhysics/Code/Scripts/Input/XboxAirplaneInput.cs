@@ -33,7 +33,7 @@ namespace WheelApps {
             if (Input.GetKeyDown(XLB)) flaps -= 1;
             flaps = Mathf.Clamp(flaps, minFlaps, maxFlaps);
 
-            cameraSwitch = Input.GetButtonDown(XYB);
+            cameraSwitch = Input.GetButtonDown(XYB) || Input.GetKeyDown(cameraKey);
         }
 
         public void HandleStickyThrottle() {

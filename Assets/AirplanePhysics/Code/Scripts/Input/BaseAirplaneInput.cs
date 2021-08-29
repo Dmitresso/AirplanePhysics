@@ -16,7 +16,7 @@ namespace WheelApps {
         protected float stickyThrottle;
         public float StickyThrottle => stickyThrottle;
 
-        [SerializeField] private KeyCode cameraKey = KeyCode.C;
+        [SerializeField] protected KeyCode cameraKey = KeyCode.C;
         [SerializeField] private KeyCode brakeKey = KeyCode.Space;
         [SerializeField] private KeyCode lFlap = KeyCode.F;
         [SerializeField] private KeyCode rFlap = KeyCode.G;
