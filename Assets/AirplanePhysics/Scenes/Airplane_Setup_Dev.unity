@@ -367,10 +367,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 18fdaa6cc97e68f44bf17b4a6d9dceb7, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1029,6 +1029,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1279860018}
+  - component: {fileID: 1279860019}
   m_Layer: 0
   m_Name: Audio_GRP
   m_TagString: Untagged
@@ -1052,6 +1053,22 @@ Transform:
   m_Father: {fileID: 2124795053}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1279860019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279860017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 416cc6938ae841228838e7e3ccee89a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 2124795056}
+  idleSrc: {fileID: 1780713544}
+  fullThrottleSrc: {fileID: 406633494}
+  maxPitch: 1.2
 --- !u!1 &1294642502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,10 +1732,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a2533b47d9a09f64abf710d8307b116f, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2199,7 +2216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMPH: 110
   rbLerpSpeed: 0.03
-  maxLiftPower: 5000
+  maxLiftPower: 1000
   liftCurve:
     serializedVersion: 2
     m_Curve:
