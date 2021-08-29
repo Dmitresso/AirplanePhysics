@@ -3,7 +3,6 @@ using UnityEngine;
 namespace WheelApps {
     public class XboxAirplaneInput : BaseAirplaneInput {
         #region Variables
-        public float throttleSpeed = 0.1f;
         #endregion
         
         
@@ -21,11 +20,10 @@ namespace WheelApps {
         
         #region Custom Methods
         protected override void HandleInput() {
-            pitch = Input.GetAxis(V);
-            roll = Input.GetAxis(H);
-            yaw = Input.GetAxis(Y);
-            throttle = Input.GetAxis(T);
-            HandleStickyThrottle();
+            pitch += Input.GetAxis(V);
+            roll += Input.GetAxis(H);
+            yaw += Input.GetAxis(Y);
+            throttle += Input.GetAxis(T);
 
             brake = Input.GetAxis(Fire1);
 
@@ -34,11 +32,6 @@ namespace WheelApps {
             flaps = Mathf.Clamp(flaps, minFlaps, maxFlaps);
 
             cameraSwitch = Input.GetButtonDown(XYB) || Input.GetKeyDown(cameraKey);
-        }
-
-        public void HandleStickyThrottle() {
-            stickyThrottle += throttle * throttleSpeed * Time.deltaTime;
-            stickyThrottle = Mathf.Clamp01(stickyThrottle);
         }
         #endregion
     }

@@ -8,6 +8,7 @@ namespace WheelApps {
         protected float yaw;
         protected float throttle;
         protected float brake;
+        protected float throttleSpeed = 0.1f;
         
         protected int flaps;
         public int minFlaps;
@@ -55,6 +56,8 @@ namespace WheelApps {
         #region Builtin Metods
         private void Update() {
             HandleInput();
+            HandleStickyThrottle();
+            ClampInputs();
         }
         #endregion
 
@@ -72,6 +75,20 @@ namespace WheelApps {
             flaps = Mathf.Clamp(flaps, minFlaps, maxFlaps);
 
             cameraSwitch = Input.GetKeyDown(cameraKey);
+        }
+        
+        
+        protected void HandleStickyThrottle() {
+            stickyThrottle += throttle * throttleSpeed * Time.deltaTime;
+            stickyThrottle = Mathf.Clamp01(stickyThrottle);
+        }
+        
+        
+        protected void ClampInputs() {
+            pitch = Mathf.Clamp(pitch, -1f, 1f);
+            roll = Mathf.Clamp(roll, -1f, 1f);
+            yaw = Mathf.Clamp(yaw, -1f, 1f);
+            throttle = Mathf.Clamp(throttle, -1f, 1f);
         }
         #endregion
     }
