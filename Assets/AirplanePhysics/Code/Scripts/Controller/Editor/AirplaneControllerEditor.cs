@@ -70,6 +70,18 @@ namespace WheelApps {
                 newPreset.airplaneWeight = targetController.airplaneWeight;
                 if (targetController.centerOfMass) newPreset.comPosition = targetController.centerOfMass.position;
 
+                if (targetController.characteristics) {
+                    newPreset.maxMPH = targetController.characteristics.maxMPH;
+                    newPreset.rbLerpSpeed = targetController.characteristics.rbLerpSpeed;
+                    newPreset.maxLiftPower = targetController.characteristics.maxLiftPower;
+                    newPreset.liftCurve = targetController.characteristics.liftCurve;
+                    newPreset.dragFactor = targetController.characteristics.dragFactor;
+                    newPreset.flapDragFactor = targetController.characteristics.flapDragFactor;
+                    newPreset.pitchSpeed = targetController.characteristics.pitchSpeed;
+                    newPreset.rollSpeed = targetController.characteristics.rollSpeed;
+                    newPreset.yawSpeed = targetController.characteristics.yawSpeed;
+                }
+                
                 AssetDatabase.CreateAsset(newPreset, finalPath);
             }
         }
