@@ -628,6 +628,7 @@ GameObject:
   - component: {fileID: 283717347}
   - component: {fileID: 283717346}
   - component: {fileID: 283717348}
+  - component: {fileID: 283717349}
   m_Layer: 0
   m_Name: FuelGauge
   m_TagString: Untagged
@@ -707,6 +708,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &283717349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283717344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f882e9ce2b4981a7dafd16458ab57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuel: {fileID: 1894477951}
+  pointer: {fileID: 1211692422}
+  minMaxRotation: {x: -53, y: 53}
 --- !u!1 &362657632
 GameObject:
   m_ObjectHideFlags: 0
@@ -3228,7 +3244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39299dfb75554e06923c251e6ff21877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxForce: 5000
+  maxForce: 3900
   maxRPM: 2550
   shutOffSpeed: 2
   powerCurve:
@@ -3268,7 +3284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12100c1b77b44d0694ad59fcf31d3e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuelCapacity: 26
+  fuelCapacity: 1
   fuelBurnRate: 6.1
 --- !u!1 &1911896709
 GameObject:
