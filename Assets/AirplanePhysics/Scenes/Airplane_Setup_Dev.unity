@@ -1170,6 +1170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcafcf41632c4e669bbe55288fc656a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  airplane: {fileID: 2124795055}
+  hundredsPointer: {fileID: 832985235}
+  thousandsPointer: {fileID: 80253765}
 --- !u!114 &585518867
 MonoBehaviour:
   m_ObjectHideFlags: 0
