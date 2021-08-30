@@ -27,7 +27,18 @@ namespace WheelApps {
         
         
         #region Constants
-        private const float poundsToKillos = 0.453592f; 
+        private const float poundsToKillos = 0.453592f;
+        private const float metersToFeet = 3.28084f;
+        #endregion
+
+
+
+        #region Properties
+        private float currentMSL;
+        public float CurrentMSL => currentMSL;
+
+        private float currentAGL;
+        public float CurrentAGL => currentAGL;
         #endregion
         
         
@@ -90,7 +101,10 @@ namespace WheelApps {
         
         
         private void HandleAltitude() {
-            
+            currentMSL = transform.position.y * metersToFeet;
+            RaycastHit hit;
+            if (!Physics.Raycast(transform.position, Vector3.down, out hit)) return;
+            if (hit.transform.CompareTag(Tags.Ground)) currentAGL = (transform.position.y - hit.point.y) * metersToFeet;
         }
 
         private void GetPresetInfo() {
