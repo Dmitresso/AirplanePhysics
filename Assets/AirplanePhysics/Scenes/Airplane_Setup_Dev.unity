@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 22964844}
   - component: {fileID: 22964846}
   - component: {fileID: 22964845}
+  - component: {fileID: 22964847}
   m_Layer: 0
   m_Name: ThrottleLever
   m_TagString: Untagged
@@ -279,6 +280,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22964843}
   m_CullTransparentMesh: 1
+--- !u!114 &22964847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22964843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2786d7afe5c548ce83d4f29391a9366a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 2124795056}
+  parentRect: {fileID: 22964844}
+  handleRect: {fileID: 519110869}
+  handleSpeed: 2
 --- !u!1 &80253764
 GameObject:
   m_ObjectHideFlags: 0
