@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace WheelApps {
+    [RequireComponent(typeof(AirplaneFuel))]
     public class AirplaneEngine : MonoBehaviour {
         #region Variables
         [Header("Engine Properties")]
@@ -16,6 +18,8 @@ namespace WheelApps {
         private bool isShutOff;
         private float lastThrottle;
         private float finalShutoffThrollte;
+
+        private AirplaneFuel fuel;
         #endregion
 
 
@@ -32,6 +36,12 @@ namespace WheelApps {
         
         
         #region Builtin Methods
+        private void Start() {
+            if (!fuel) {
+                fuel = GetComponent<AirplaneFuel>();
+                if (fuel) fuel.Init();
+            }
+        }
         #endregion
         
         
@@ -54,6 +64,8 @@ namespace WheelApps {
             currentRPM = finalThrottle * maxRPM;
 
             if (propeller) propeller.HandlePropeller(finalThrottle * maxRPM);
+
+            if (fuel) fuel.UpdateFuel(finalThrottle);
 
             var finalPower = finalThrottle * maxForce;
             var finalForce = finalPower * transform.forward;
