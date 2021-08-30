@@ -21,21 +21,24 @@ namespace WheelApps {
         public float yawSpeed = 1000f;
         
 
+        private float forwardSpeed;
+        public float ForwardSpeed => forwardSpeed;
+
+        private float mph;
+        public float MPH => mph;
+        
         
         private BaseAirplaneInput input;
         private Rigidbody rb;
         private float startDrag;
         private float startAngularDrag;
 
-        private float forwardSpeed;
-        private float mph;  
         private float maxMPS;
         private float normalizeMPH;
         private float angleOfAttack;
         private float pitchAngle;
         private float rollAngle;
         #endregion
-
 
 
         #region Constants
@@ -77,10 +80,11 @@ namespace WheelApps {
         private void CalculateForwardSpeed() {
             var localVelocity = transform.InverseTransformDirection(rb.velocity);
             forwardSpeed = Mathf.Max(0, localVelocity.z);
-            forwardSpeed = Mathf.Clamp(forwardSpeed, 0, maxMPS);
+            // forwardSpeed = Mathf.Clamp(forwardSpeed, 0, maxMPS);
+            
             
             mph = forwardSpeed * mpsToMph;
-            mph = Mathf.Clamp(mph, 0, maxMPH);
+            //mph = Mathf.Clamp(mph, 0, maxMPH);
             normalizeMPH = Mathf.InverseLerp(0, maxMPH, mph);
         }
 
