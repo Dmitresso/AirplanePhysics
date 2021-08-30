@@ -11,6 +11,7 @@ namespace WheelApps {
         protected float throttleSpeed = 0.1f;
         
         protected int flaps;
+        public int maxFlapIncrements = 2;
         public int minFlaps;
         public int maxFlaps = 3;
         
@@ -46,6 +47,8 @@ namespace WheelApps {
         public float Throttle => throttle;
 
         public int Flaps => flaps;
+
+        public float NormalizedFlaps => (float) flaps / maxFlapIncrements;
 
         public float Brake => brake;
         
