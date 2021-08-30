@@ -15,6 +15,9 @@ namespace WheelApps {
         #region Properties
         private float currentFuel;
         public float CurrentFuel => currentFuel;
+
+        private float normalizedFuel;
+        public float NormalizedFuel => normalizedFuel;
         #endregion
 
 
@@ -29,8 +32,11 @@ namespace WheelApps {
             currentFuel = fuelCapacity;
         }
         
-        public void UpdateFuel(float precentage) {
-            
+        public void UpdateFuel(float percentage) {
+            var currentBurn = fuelBurnRate * percentage / 3600f * Time.deltaTime;
+            currentFuel -= currentBurn;
+            currentFuel = Mathf.Clamp(currentFuel, 0f, fuelCapacity);
+            normalizedFuel = currentFuel / fuelCapacity;
         }
         #endregion
     }

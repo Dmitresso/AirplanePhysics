@@ -62,15 +62,21 @@ namespace WheelApps {
             }
 
             currentRPM = finalThrottle * maxRPM;
+            if (propeller) propeller.HandlePropeller(currentRPM);
+            HandleFuel(finalThrottle);
 
-            if (propeller) propeller.HandlePropeller(finalThrottle * maxRPM);
 
-            if (fuel) fuel.UpdateFuel(finalThrottle);
 
             var finalPower = finalThrottle * maxForce;
             var finalForce = finalPower * transform.forward;
             
             return finalForce;
+        }
+        
+        
+        private void HandleFuel(float throttle) {
+            if (fuel) fuel.UpdateFuel(throttle);
+            if (fuel.CurrentFuel <= 0f) isShutOff = true;
         }
         #endregion
     }
