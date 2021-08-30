@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace WheelApps {
     public class AirplaneFuel : MonoBehaviour {
@@ -6,8 +7,11 @@ namespace WheelApps {
         [Header("Fuel Properties")]
         [Tooltip("The total number of gallons in the fuel tank.")]
         public float fuelCapacity = 26f;
-        [Tooltip("the average fuel burn per hour.")]
+        [Tooltip("The average fuel burn per hour.")]
         public float fuelBurnRate = 6.1f;
+
+        [Header("Events")]
+        public UnityEvent onFuelFull = new UnityEvent();
         #endregion
 
 
@@ -29,6 +33,16 @@ namespace WheelApps {
 
         #region Custom Methods
         public void Init() {
+            currentFuel = fuelCapacity;
+        }
+
+        public void AddFuel(float fuelAmount) {
+            currentFuel += fuelAmount;
+            currentFuel = Mathf.Clamp(currentFuel, 0f, fuelCapacity);
+            if (currentFuel >= fuelCapacity) onFuelFull?.Invoke();
+        }
+
+        public void ResetFill() {
             currentFuel = fuelCapacity;
         }
         
