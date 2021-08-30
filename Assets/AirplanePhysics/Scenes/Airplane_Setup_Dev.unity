@@ -1540,6 +1540,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709fd9b2195c427896846c393271cc69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  engine: {fileID: 1894477950}
+  pointer: {fileID: 1355575212}
 --- !u!114 &933231732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3057,6 +3059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxForce: 5000
   maxRPM: 2550
+  shutOffSpeed: 2
   powerCurve:
     serializedVersion: 2
     m_Curve:
