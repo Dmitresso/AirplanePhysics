@@ -21,7 +21,7 @@ namespace WheelApps {
             var bankRot = Quaternion.Euler(0f, 0f, bankAngle);
             bgRect.transform.rotation = bankRot;
 
-            var targetPosition = new Vector3(0f, pitchAngle, 0f);
+            var targetPosition = new Vector3(0f, - pitchAngle, 0f);
             bgRect.anchoredPosition = targetPosition;
 
             if (!arrowRect) return;

@@ -19,6 +19,7 @@ namespace WheelApps {
         public float pitchSpeed = 1000f;
         public float rollSpeed = 1000f;
         public float yawSpeed = 1000f;
+        public AnimationCurve controlSurfaceEfficiency = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
         
 
         private float forwardSpeed;
@@ -38,6 +39,8 @@ namespace WheelApps {
         private float angleOfAttack;
         private float pitchAngle;
         private float rollAngle;
+
+        private float csEfficiency;
         #endregion
 
 
@@ -69,6 +72,7 @@ namespace WheelApps {
             CalculateLift();
             CalculateDrag();
 
+            HandleControlSurfaceEfficiency();
             HandlePitch();
             HandleRoll();
             HandleYaw();
@@ -79,13 +83,13 @@ namespace WheelApps {
         
         private void CalculateForwardSpeed() {
             var localVelocity = transform.InverseTransformDirection(rb.velocity);
-            forwardSpeed = Mathf.Max(0, localVelocity.z);
+            forwardSpeed = Mathf.Max(0f, localVelocity.z);
             // forwardSpeed = Mathf.Clamp(forwardSpeed, 0, maxMPS);
             
             
             mph = forwardSpeed * mpsToMph;
             //mph = Mathf.Clamp(mph, 0, maxMPH);
-            normalizeMPH = Mathf.InverseLerp(0, maxMPH, mph);
+            normalizeMPH = Mathf.InverseLerp(0f, maxMPH, mph);
         }
 
         
@@ -111,13 +115,19 @@ namespace WheelApps {
         }
 
         
+        private void HandleControlSurfaceEfficiency() {
+            csEfficiency = controlSurfaceEfficiency.Evaluate(normalizeMPH);
+            
+        }
+        
+        
         private void HandlePitch() {
             var flatForward = transform.forward;
             flatForward.y = 0f;
             flatForward = flatForward.normalized;
             pitchAngle = Vector3.Angle(transform.forward, flatForward);
 
-            var pitchTorque = input.Pitch * pitchSpeed * transform.right;
+            var pitchTorque = input.Pitch * pitchSpeed * csEfficiency * transform.right;
             rb.AddTorque(pitchTorque);
         }
 
@@ -128,20 +138,20 @@ namespace WheelApps {
             flatRight = flatRight.normalized;
             rollAngle = Vector3.SignedAngle(transform.right, flatRight, transform.forward);
 
-            var rollTorque = - input.Roll * rollSpeed * transform.forward;
+            var rollTorque = - input.Roll * rollSpeed * csEfficiency * transform.forward;
             rb.AddTorque(rollTorque);
         }
 
         
         private void HandleYaw() {
-            var yawTorque = input.Yaw * yawSpeed * transform.up;
+            var yawTorque = input.Yaw * yawSpeed * csEfficiency * transform.up;
             rb.AddTorque(yawTorque);
         }
 
 
         private void HandleBanking() {
             var bankSide = Mathf.InverseLerp(-90f, 90f, rollAngle);
-            var bankAmount = Mathf.Lerp(-1, 1, bankSide);
+            var bankAmount = Mathf.Lerp(-1f, 1f, bankSide);
             var bankTorque = bankAmount * rollSpeed * transform.up;
             rb.AddTorque(bankTorque);
         }
