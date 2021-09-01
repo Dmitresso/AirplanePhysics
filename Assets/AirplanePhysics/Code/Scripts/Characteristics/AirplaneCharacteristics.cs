@@ -10,6 +10,7 @@ namespace WheelApps {
         [Header("Lift Properties")]
         public float maxLiftPower = 5000f;
         public AnimationCurve liftCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+        public float flapLiftPower = 100f;
         
         [Header("Drag Properties")]
         public float dragFactor = 0.0004f;
@@ -99,7 +100,10 @@ namespace WheelApps {
             
             var liftDirection = transform.up;
             var liftPower = liftCurve.Evaluate(normalizeMPH) * maxLiftPower;
-            var finalLiftForce = liftDirection * liftPower * angleOfAttack;
+
+            var finalLiftPower = flapLiftPower * input.NormalizedFlaps;
+            
+            var finalLiftForce = liftDirection * (liftPower + finalLiftPower) * angleOfAttack;
             rb.AddForce(finalLiftForce);
         }
 
