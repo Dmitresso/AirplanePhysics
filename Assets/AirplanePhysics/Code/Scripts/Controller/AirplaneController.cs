@@ -3,6 +3,14 @@ using System.Linq;
 using UnityEngine;
 
 namespace WheelApps {
+    public enum AirplaneState {
+        LANDED,
+        GROUNDED,
+        FLYING,
+        CRASHED
+    }
+    
+    
     [RequireComponent(typeof(AirplaneCharacteristics))]
     public class AirplaneController : BaseRigidbodyController {
         #region Variables
@@ -24,7 +32,11 @@ namespace WheelApps {
         [Header("Control Surfaces")]
         public List<AirplaneControlSurface> controlSurfaces = new List<AirplaneControlSurface>();
 
+
+        [SerializeField] private AirplaneState state = AirplaneState.LANDED;
         [SerializeField] private bool isGrounded = true;
+        [SerializeField] private bool isLanded = true;
+        [SerializeField] private bool isFlying = false;
         #endregion
         
         
@@ -134,7 +146,24 @@ namespace WheelApps {
         private void CheckGrounded() {
             if (wheels.Count <= 0) return;
             var grounded = wheels.Count(wheel => wheel.IsGrounded);
-            isGrounded = grounded.Equals(wheels.Count);
+            if (grounded == wheels.Count) {
+                isGrounded = true;
+                isFlying = !isGrounded;
+
+                if (rb.velocity.magnitude < 1f) {
+                    isLanded = true;
+                    state = AirplaneState.LANDED;
+                }
+                else {
+                    isLanded = false;
+                    state = AirplaneState.GROUNDED;
+                }
+            }
+            else {
+                isGrounded = false;
+                isFlying = !isGrounded;
+                state = AirplaneState.FLYING;
+            }
         }
         #endregion
     }
