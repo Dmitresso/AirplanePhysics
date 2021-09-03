@@ -32,7 +32,7 @@ namespace WheelApps {
 
         
         private void OnTriggerEnter(Collider other) {
-            if (other.gameObject.CompareTag(Tags.Player)) CheckDirection(other.transform.forward);
+            if (other.gameObject.CompareTag(Tags.Player) && !isCleared) CheckDirection(other.transform.forward);
         }
 
         

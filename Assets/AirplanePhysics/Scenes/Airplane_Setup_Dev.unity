@@ -4675,7 +4675,7 @@ PrefabInstance:
       objectReference: {fileID: 197387020}
     - target: {fileID: 1632648789198752549, guid: 074958af5f1d95f4b9afe3c5ae4e5215, type: 3}
       propertyPath: m_VersionIndex
-      value: 3067
+      value: 3070
       objectReference: {fileID: 0}
     - target: {fileID: 1632648789198752550, guid: 074958af5f1d95f4b9afe3c5ae4e5215, type: 3}
       propertyPath: m_Mesh
@@ -4892,7 +4892,7 @@ PrefabInstance:
       objectReference: {fileID: 1148034983}
     - target: {fileID: 1632648789198752549, guid: 074958af5f1d95f4b9afe3c5ae4e5215, type: 3}
       propertyPath: m_VersionIndex
-      value: 3070
+      value: 3073
       objectReference: {fileID: 0}
     - target: {fileID: 1632648789198752550, guid: 074958af5f1d95f4b9afe3c5ae4e5215, type: 3}
       propertyPath: m_Mesh
@@ -5145,6 +5145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d0bb31d89f19745b4fe36c491c2e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gates: []
+  OnCompletedTrack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1894477948
 GameObject:
   m_ObjectHideFlags: 0
@@ -7804,7 +7808,7 @@ PrefabInstance:
       objectReference: {fileID: 1694895001}
     - target: {fileID: 1632648789198752549, guid: 074958af5f1d95f4b9afe3c5ae4e5215, type: 3}
       propertyPath: m_VersionIndex
-      value: 3064
+      value: 3067
       objectReference: {fileID: 0}
     - target: {fileID: 1632648789198752550, guid: 074958af5f1d95f4b9afe3c5ae4e5215, type: 3}
       propertyPath: m_Mesh
