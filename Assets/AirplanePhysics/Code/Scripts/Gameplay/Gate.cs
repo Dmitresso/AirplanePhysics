@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -8,8 +9,7 @@ namespace WheelApps {
         #region Variables
         [Header("Gate Properties")]
         public bool reverseDirection;
-        public bool isActive;
-
+        
         [Header("UI Properties")]
         public Image arrowImage;
 
@@ -17,8 +17,10 @@ namespace WheelApps {
         public UnityEvent OnClearedGate = new UnityEvent();
         public UnityEvent OnFailedGate = new UnityEvent();
         
+        
         private Vector3 gateDirection;
-
+        public bool isActive;
+        public bool isCleared;
         #endregion
 
 
@@ -28,12 +30,12 @@ namespace WheelApps {
 
         }
 
+        
         private void OnTriggerEnter(Collider other) {
-            if (other.CompareTag(Tags.Player)) {
-                
-            }
+            if (other.gameObject.CompareTag(Tags.Player)) CheckDirection(other.transform.forward);
         }
 
+        
         private void OnDrawGizmos() {
             GetGateDirection();
             
@@ -41,28 +43,37 @@ namespace WheelApps {
             Gizmos.DrawLine(transform.position, transform.position + gateDirection * 6f);
             Gizmos.DrawSphere(transform.position + gateDirection * 6f, 1f);
         }
-
         #endregion
 
 
 
         #region Custom Methods
         public void ActivateGate() {
-            
+            isActive = true;
+
+            if (arrowImage) arrowImage.enabled = true;
         }
 
+        
         public void DeactivateGate() {
-            
+            isActive = false;
+            isCleared = false;
+
+            if (arrowImage) arrowImage.enabled = false;
         }
 
+        
         public void CheckDirection(Vector3 direction) {
             var dot = Vector3.Dot(gateDirection, direction);
             if (dot > 0.25f) {
                 OnClearedGate?.Invoke();
+                isCleared = true;
+                DeactivateGate();
             }
             else OnFailedGate?.Invoke();
         }
 
+        
         private void GetGateDirection() {
             gateDirection = transform.forward;
             if (reverseDirection) gateDirection = -gateDirection;
