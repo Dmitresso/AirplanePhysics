@@ -21,6 +21,13 @@ namespace WheelApps {
         #endregion
 
 
+        
+        #region Properties
+        private bool isGrounded;
+        public bool IsGrounded => isGrounded;
+        #endregion
+
+        
 
         #region Builtin Methods
 
@@ -51,6 +58,7 @@ namespace WheelApps {
                     collider.brakeTorque = finalBrakeForce;
                 }
                 else {
+                    finalBrakeForce = 0f;
                     collider.brakeTorque = 0f;
                     collider.motorTorque = 0.000000001f;
                 }
@@ -60,6 +68,8 @@ namespace WheelApps {
                 finalSteerAngle = Mathf.Lerp(finalSteerAngle, - input.Yaw * steeringAngle, steerSmoothSpeed * Time.deltaTime);
                 collider.steerAngle = finalSteerAngle;
             }
+
+            isGrounded = collider.isGrounded;
         }
         #endregion
     }

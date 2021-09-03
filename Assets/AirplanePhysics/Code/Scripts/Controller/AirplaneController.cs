@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace WheelApps {
@@ -22,6 +23,8 @@ namespace WheelApps {
 
         [Header("Control Surfaces")]
         public List<AirplaneControlSurface> controlSurfaces = new List<AirplaneControlSurface>();
+
+        [SerializeField] private bool isGrounded = true;
         #endregion
         
         
@@ -59,6 +62,8 @@ namespace WheelApps {
             if (centerOfMass) rb.centerOfMass = centerOfMass.localPosition;
             characteristics = GetComponent<AirplaneCharacteristics>();
             if (characteristics) characteristics.Init(rb, input);
+            
+            InvokeRepeating(nameof(CheckGrounded), 2f, 1f);
         }
         #endregion
         
@@ -77,7 +82,7 @@ namespace WheelApps {
         
         private void HandleEngines() {
             if (engines == null || engines.Count <= 0) return;
-            foreach (var engine in engines) rb.AddForce(engine.CalculateForce(input.Throttle));
+            foreach (var engine in engines) rb.AddForce(engine.CalculateForce(input.StickyThrottle));
         }
 
         
@@ -107,6 +112,7 @@ namespace WheelApps {
             if (hit.transform.CompareTag(Tags.Ground)) currentAGL = (transform.position.y - hit.point.y) * metersToFeet;
         }
 
+        
         private void GetPresetInfo() {
             if (!preset) return;
             airplaneWeight = preset.airplaneWeight;
@@ -122,6 +128,13 @@ namespace WheelApps {
             characteristics.pitchSpeed = preset.pitchSpeed;
             characteristics.rollSpeed = preset.rollSpeed;
             characteristics.yawSpeed = preset.yawSpeed;
+        }
+
+
+        private void CheckGrounded() {
+            if (wheels.Count <= 0) return;
+            var grounded = wheels.Count(wheel => wheel.IsGrounded);
+            isGrounded = grounded.Equals(wheels.Count);
         }
         #endregion
     }
