@@ -26,6 +26,16 @@ namespace WheelApps {
             currentGateId = 0;
             StartTrack();
         }
+
+        private void OnDrawGizmos() {
+            if (gates.Count <= 0) return;
+            for (var i = 0; i < gates.Count; i++) {
+                if (i + 1 == gates.Count) break;
+                Gizmos.color = new Color(0.5f, 0.2f, 0.6f, 0.5f);
+                Gizmos.DrawLine(gates[i].transform.position, gates[i + 1].transform.position);
+            }
+        }
+
         #endregion
 
 
@@ -51,7 +61,7 @@ namespace WheelApps {
 
         
         private void InitializeGates() {
-            if (gates.Count <= 0) return;
+            if (gates.Count <= 0) return; 
             foreach (var gate in gates) {
                 gate.DeactivateGate();
                 gate.OnClearedGate.AddListener(SelectNextGate);
