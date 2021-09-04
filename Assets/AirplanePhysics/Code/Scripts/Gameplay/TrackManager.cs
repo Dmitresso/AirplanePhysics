@@ -82,7 +82,7 @@ namespace WheelApps {
 
         private void UpdateUI() {
             if (gateText) {
-                
+                gateText.text = "Gates: " + currentTrack.CurrentGateId + "/" + currentTrack.TotalGates;
             }
 
             if (scoreText) {
@@ -90,7 +90,9 @@ namespace WheelApps {
             }
 
             if (timeText) {
-                
+                var minutes = currentTrack.CurrentMinutes.ToString("00");
+                var seconds = currentTrack.CurrentSeconds.ToString("00");
+                timeText.text = minutes + ":" + seconds;
             }
         }
         #endregion

@@ -12,11 +12,28 @@ namespace WheelApps {
 
         [Header("Track Events")]
         public UnityEvent OnCompletedTrack = new UnityEvent();
-        
-        private int currentGateId;
+
+        private float startTime;
+        private int currentTime;
         #endregion
 
 
+
+        #region Properties
+        private int currentGateId;
+        public int CurrentGateId => currentGateId;
+
+        private int totalGates;
+        public int TotalGates => totalGates;
+
+        private int currentMinutes;
+        public int CurrentMinutes => currentMinutes;
+
+        private int currentSeconds;
+        public int CurrentSeconds => currentSeconds;
+        #endregion
+        
+        
 
         #region Builtin Methods
         private void Start() {
@@ -26,6 +43,12 @@ namespace WheelApps {
             currentGateId = 0;
             StartTrack();
         }
+
+
+        private void Update() {
+            UpdateStats();
+        }
+
 
         private void OnDrawGizmos() {
             if (gates.Count <= 0) return;
@@ -42,6 +65,7 @@ namespace WheelApps {
         #region Custom Methods
         public void StartTrack() {
             if (gates.Count <= 0) return;
+            startTime = Time.time;
             gates[currentGateId].ActivateGate();
         }
         
@@ -56,6 +80,7 @@ namespace WheelApps {
         private void FindGates() {
             gates.Clear(); 
             gates = GetComponentsInChildren<Gate>().ToList();
+            totalGates = gates.Count;
         }
 
         
@@ -65,6 +90,12 @@ namespace WheelApps {
                 gate.DeactivateGate();
                 gate.OnClearedGate.AddListener(SelectNextGate);
             }
+        }
+
+        private void UpdateStats() {
+            currentTime = (int) (Time.time - startTime);
+            currentMinutes = (int) (currentTime / 60f);
+            currentSeconds = currentTime - (currentMinutes * 60);
         }
         #endregion
     }
