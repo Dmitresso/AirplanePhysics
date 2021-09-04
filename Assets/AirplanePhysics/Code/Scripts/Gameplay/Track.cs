@@ -8,6 +8,7 @@ namespace WheelApps {
     public class Track : MonoBehaviour {
         #region Variables
         [Header("Track Properties")]
+        public TrackData trackData;
         public List<Gate> gates = new List<Gate>();
 
         [Header("Track Events")]
@@ -34,6 +35,12 @@ namespace WheelApps {
 
         private int currentScore;
         public int CurrentScore => currentScore;
+
+        private bool isComplete;
+        public bool IsComplete {
+            get => isComplete;
+            set => isComplete = value;
+        }
         #endregion
         
         
@@ -49,7 +56,7 @@ namespace WheelApps {
 
 
         private void Update() {
-            UpdateStats();
+            if (!isComplete) UpdateStats();
         }
 
 
@@ -70,6 +77,7 @@ namespace WheelApps {
             if (gates.Count <= 0) return;
             startTime = Time.time;
             currentScore = 0;
+            isComplete = false;
             gates[currentGateId].ActivateGate();
         }
         
@@ -104,6 +112,13 @@ namespace WheelApps {
             currentTime = (int) (Time.time - startTime);
             currentMinutes = (int) (currentTime / 60f);
             currentSeconds = currentTime - currentMinutes * 60;
+        }
+
+
+        public void SaveTrackData() {
+            if (!trackData) return;
+            trackData.SetTimes(currentTime);
+            trackData.SetScore(currentScore);
         }
         #endregion
     }

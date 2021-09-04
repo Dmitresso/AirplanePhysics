@@ -76,6 +76,10 @@ namespace WheelApps {
         private IEnumerator WaitForLanding() {
             if (airplane.State != AirplaneState.LANDED) yield return null;
             OnCompletedRace?.Invoke();
+            if (currentTrack) {
+                currentTrack.IsComplete = true;
+                currentTrack.SaveTrackData();
+            }
         }
 
 
