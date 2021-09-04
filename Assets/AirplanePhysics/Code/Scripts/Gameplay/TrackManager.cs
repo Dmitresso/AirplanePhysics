@@ -1,7 +1,9 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 namespace WheelApps {
     public class TrackManager : MonoBehaviour {
@@ -10,6 +12,8 @@ namespace WheelApps {
         public List<Track> tracks = new List<Track>();
         public AirplaneController airplane;
 
+        [Header("Manager Events")]
+        public UnityEvent OnCompletedRace = new UnityEvent();
         #endregion
 
 
@@ -21,7 +25,6 @@ namespace WheelApps {
             
             StartTrack(0);
         }
-
         #endregion
 
 
@@ -40,11 +43,6 @@ namespace WheelApps {
             }
         }
 
-
-        private void CompletedTrack() {
-            
-        }
-        
         
         public void StartTrack(int trackID) {
             if (trackID < 0 || trackID > tracks.Count) return;
@@ -53,6 +51,16 @@ namespace WheelApps {
                 tracks[trackID].gameObject.SetActive(true);
                 tracks[trackID].StartTrack();
             }
+        }
+
+
+        private void CompletedTrack() {
+            if (airplane) StartCoroutine(nameof(WaitForLanding));
+        }
+
+        private IEnumerator WaitForLanding() {
+            if (airplane.State != AirplaneState.LANDED) yield return null;
+            OnCompletedRace?.Invoke();
         }
         #endregion
     }

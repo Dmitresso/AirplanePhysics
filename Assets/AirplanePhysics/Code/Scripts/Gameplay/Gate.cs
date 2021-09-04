@@ -1,8 +1,7 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+
 
 namespace WheelApps {
     public class Gate : MonoBehaviour {
@@ -26,11 +25,6 @@ namespace WheelApps {
 
 
         #region Builtin Methods
-        private void Start() {
-
-        }
-
-        
         private void OnTriggerEnter(Collider other) {
             if (other.gameObject.CompareTag(Tags.Player) && !isCleared) CheckDirection(other.transform.forward);
         }

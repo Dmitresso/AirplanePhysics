@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 namespace WheelApps {
     public class Track : MonoBehaviour {
         #region Variables
@@ -34,7 +35,6 @@ namespace WheelApps {
                 Gizmos.DrawLine(gates[i].transform.position, gates[i + 1].transform.position);
             }
         }
-
         #endregion
 
 

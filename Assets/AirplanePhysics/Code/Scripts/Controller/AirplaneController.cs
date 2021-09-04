@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
+
 namespace WheelApps {
     public enum AirplaneState {
         LANDED,
@@ -49,6 +50,8 @@ namespace WheelApps {
 
 
         #region Properties
+        public AirplaneState State => state;
+
         private float currentMSL;
         public float CurrentMSL => currentMSL;
 
