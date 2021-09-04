@@ -31,6 +31,9 @@ namespace WheelApps {
 
         private int currentSeconds;
         public int CurrentSeconds => currentSeconds;
+
+        private int currentScore;
+        public int CurrentScore => currentScore;
         #endregion
         
         
@@ -66,11 +69,16 @@ namespace WheelApps {
         public void StartTrack() {
             if (gates.Count <= 0) return;
             startTime = Time.time;
+            currentScore = 0;
             gates[currentGateId].ActivateGate();
         }
         
         
-        private void SelectNextGate() {
+        private void SelectNextGate(float distancePercentage) {
+            var score = Mathf.RoundToInt(distancePercentage * 100f);
+            score = Mathf.Clamp(currentScore, 0, 100);
+            currentScore += score;
+            
             currentGateId++;
             if (currentGateId == gates.Count) OnCompletedTrack?.Invoke();
             gates[currentGateId].ActivateGate();
@@ -95,7 +103,7 @@ namespace WheelApps {
         private void UpdateStats() {
             currentTime = (int) (Time.time - startTime);
             currentMinutes = (int) (currentTime / 60f);
-            currentSeconds = currentTime - (currentMinutes * 60);
+            currentSeconds = currentTime - currentMinutes * 60;
         }
         #endregion
     }

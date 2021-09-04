@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,7 +85,7 @@ namespace WheelApps {
             }
 
             if (scoreText) {
-                
+                scoreText.text = "Score: " + currentTrack.CurrentScore.ToString("0000");
             }
 
             if (timeText) {
