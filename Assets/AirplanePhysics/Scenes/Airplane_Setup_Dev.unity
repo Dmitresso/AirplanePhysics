@@ -5773,6 +5773,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959948b76fc366a48af40b5e42a8dac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tracks:
+  - {fileID: 1889712769}
+  airplane: {fileID: 2124795055}
 --- !u!1 &2124795052
 GameObject:
   m_ObjectHideFlags: 0
@@ -5864,6 +5867,10 @@ MonoBehaviour:
   - {fileID: 953906336}
   - {fileID: 1925181961}
   - {fileID: 1649955325}
+  state: 0
+  isGrounded: 0
+  isLanded: 1
+  isFlying: 0
 --- !u!114 &2124795056
 MonoBehaviour:
   m_ObjectHideFlags: 0
