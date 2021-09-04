@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 
 namespace WheelApps {
@@ -12,8 +14,16 @@ namespace WheelApps {
         public List<Track> tracks = new List<Track>();
         public AirplaneController airplane;
 
+        [Header("Manager UI")]
+        public Text gateText;
+        public Text timeText;
+        public Text scoreText;
+        
         [Header("Manager Events")]
         public UnityEvent OnCompletedRace = new UnityEvent();
+
+
+        private Track currentTrack;
         #endregion
 
 
@@ -24,6 +34,11 @@ namespace WheelApps {
             InitTracks();
             
             StartTrack(0);
+        }
+
+
+        private void Update() {
+            if (currentTrack) UpdateUI();
         }
         #endregion
 
@@ -50,6 +65,7 @@ namespace WheelApps {
                 if (i != trackID) tracks[i].gameObject.SetActive(false);
                 tracks[trackID].gameObject.SetActive(true);
                 tracks[trackID].StartTrack();
+                currentTrack = tracks[trackID];
             }
         }
 
@@ -61,6 +77,21 @@ namespace WheelApps {
         private IEnumerator WaitForLanding() {
             if (airplane.State != AirplaneState.LANDED) yield return null;
             OnCompletedRace?.Invoke();
+        }
+
+
+        private void UpdateUI() {
+            if (gateText) {
+                
+            }
+
+            if (scoreText) {
+                
+            }
+
+            if (timeText) {
+                
+            }
         }
         #endregion
     }
