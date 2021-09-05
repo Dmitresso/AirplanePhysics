@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 namespace WheelApps {
     public class MobileThumbstick : MonoBehaviour {
@@ -13,6 +11,7 @@ namespace WheelApps {
         private RectTransform bounds;
         private Vector2 finalDelta;
         private bool isTouching;
+        private float knobSpeed = 10f;
         #endregion
 
 
@@ -47,23 +46,25 @@ namespace WheelApps {
             }
             else {
                 isTouching = false;
-                Reset();
+                ResetKnob();
             }
         }
 
 
         private void HandleTouches() {
-            
+
         }
 
 
         private void HandleDragging() {
-            
+            var targetPosition = Vector2.zero;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(bounds, Input.mousePosition, null, out targetPosition);
+            knob.anchoredPosition = Vector2.Lerp(knob.anchoredPosition, targetPosition, knobSpeed * Time.deltaTime);
         }
 
 
-        private void Reset() {
-            
+        private void ResetKnob() {
+            knob.anchoredPosition = Vector2.Lerp(knob.anchoredPosition, Vector2.zero, knobSpeed * Time.deltaTime);
         }
         #endregion
     }
