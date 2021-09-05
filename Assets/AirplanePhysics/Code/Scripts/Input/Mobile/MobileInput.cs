@@ -11,7 +11,7 @@ namespace WheelApps {
 
 
 
-        #region Ciustom Methods
+        #region Custom Methods
         protected void HandleInput() {
             if (!lThumbstick || !rThumbstick) return;
             pitch = lThumbstick.VerticalAxis;
@@ -22,7 +22,12 @@ namespace WheelApps {
 
 
         public void SetBrake(float value) {
-            
+            brake = value;
+        }
+
+
+        public void SetFlaps(int value) {
+            flaps += value;
         }
         #endregion
     }

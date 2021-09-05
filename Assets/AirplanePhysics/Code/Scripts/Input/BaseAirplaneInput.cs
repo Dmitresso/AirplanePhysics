@@ -79,14 +79,13 @@ namespace WheelApps {
 
             if (Input.GetKeyDown(lFlap)) flaps += 1;
             if (Input.GetKeyDown(rFlap)) flaps -= 1;
-            flaps = Mathf.Clamp(flaps, minFlaps, maxFlaps);
 
             cameraSwitch = Input.GetKeyDown(cameraKey);
         }
         
         
         protected void HandleStickyThrottle() {
-            stickyThrottle += throttle * throttleSpeed * Time.deltaTime;
+            stickyThrottle += - throttle * throttleSpeed * Time.deltaTime;
             stickyThrottle = Mathf.Clamp01(stickyThrottle);
         }
         
@@ -96,6 +95,7 @@ namespace WheelApps {
             roll = Mathf.Clamp(roll, -1f, 1f);
             yaw = Mathf.Clamp(yaw, -1f, 1f);
             throttle = Mathf.Clamp(throttle, -1f, 1f);
+            flaps = Mathf.Clamp(flaps, minFlaps, maxFlaps);
         }
         #endregion
     }

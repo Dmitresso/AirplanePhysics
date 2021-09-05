@@ -25,7 +25,6 @@ namespace WheelApps {
 
             if (Input.GetKeyDown(XRB)) flaps += 1;
             if (Input.GetKeyDown(XLB)) flaps -= 1;
-            flaps = Mathf.Clamp(flaps, minFlaps, maxFlaps);
 
             cameraSwitch = Input.GetButtonDown(XYB) || Input.GetKeyDown(cameraKey);
         }
