@@ -1,5 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+
 
 namespace WheelApps {
     [RequireComponent(typeof(AirplaneFuel))]
@@ -29,6 +29,7 @@ namespace WheelApps {
             set => isShutOff = value;
         }
 
+        
         private float currentRPM;
         public float CurrentRPM => currentRPM;
         #endregion
@@ -43,7 +44,6 @@ namespace WheelApps {
             }
         }
         #endregion
-        
         
         
         
@@ -64,8 +64,6 @@ namespace WheelApps {
             currentRPM = finalThrottle * maxRPM;
             if (propeller) propeller.HandlePropeller(currentRPM);
             HandleFuel(finalThrottle);
-
-
 
             var finalPower = finalThrottle * maxForce;
             var finalForce = finalPower * transform.forward;

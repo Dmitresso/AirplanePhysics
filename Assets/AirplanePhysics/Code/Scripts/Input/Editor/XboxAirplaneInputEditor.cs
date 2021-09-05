@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
+
 namespace WheelApps {
     [CustomEditor(typeof(XboxAirplaneInput))]
     public class XboxAirplaneInputEditor : Editor {
@@ -8,6 +9,7 @@ namespace WheelApps {
         private BaseAirplaneInput targetInput;
         #endregion
 
+        
         
         #region Builtin Methods
         private void OnEnable() {

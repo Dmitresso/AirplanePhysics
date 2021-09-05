@@ -27,6 +27,5 @@ namespace WheelApps {
             pointer.rotation = Quaternion.Euler(0f, 0f, - targetRotation);
         }
         #endregion
-
     }
 }

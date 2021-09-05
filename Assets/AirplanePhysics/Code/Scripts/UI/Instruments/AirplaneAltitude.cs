@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 namespace WheelApps {
     public class AirplaneAltitude : MonoBehaviour, IAirplaneUI {
         #region Variables
@@ -7,7 +8,6 @@ namespace WheelApps {
         public AirplaneController airplane;
         public RectTransform bgRect;
         public RectTransform arrowRect;
-        
         #endregion
 
 
@@ -28,6 +28,5 @@ namespace WheelApps {
             arrowRect.transform.rotation = bankRot;
         }
         #endregion
-
     }
 }

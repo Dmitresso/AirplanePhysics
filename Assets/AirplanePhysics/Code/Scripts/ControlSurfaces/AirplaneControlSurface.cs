@@ -1,5 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+
 
 namespace WheelApps {
     public enum ControlSurfaceType {
@@ -9,9 +9,9 @@ namespace WheelApps {
         Aileron
     }
     
+    
     public class AirplaneControlSurface : MonoBehaviour {
         #region Variables
-
         [Header("Control Surfaces Properties")]
         public ControlSurfaceType type = ControlSurfaceType.Rudder;
         public float maxAngle = 30f;
@@ -25,16 +25,11 @@ namespace WheelApps {
         
         
         #region Builtin Methods
-        private void Start() {
-            
-        }
-
         private void Update() {
             if (!controlSurfaceGraphic) return;
             var finalAngleAxis = axis * targetAngle;
             controlSurfaceGraphic.localRotation = Quaternion.Slerp(controlSurfaceGraphic.localRotation, Quaternion.Euler(finalAngleAxis), smoothSpeed * Time.deltaTime);
         }
-
         #endregion
         
         

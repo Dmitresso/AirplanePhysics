@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 namespace WheelApps {
     [CreateAssetMenu(menuName = "WheelApps/Create Airplane Preset")]
     public class AirplanePreset : ScriptableObject {

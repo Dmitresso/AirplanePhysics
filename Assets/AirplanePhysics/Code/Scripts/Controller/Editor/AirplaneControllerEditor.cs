@@ -1,23 +1,24 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+
 
 namespace WheelApps {
     [CustomEditor(typeof(AirplaneController))]
     public class AirplaneControllerEditor : Editor {
         #region Variables
         private AirplaneController targetController;
-        
-
         #endregion
 
+        
+        
         #region Builtin Methods
         private void OnEnable() {
             targetController = (AirplaneController) target;
         }
 
+        
         public override void OnInspectorGUI() {
             base.OnInspectorGUI();
 
@@ -49,18 +50,21 @@ namespace WheelApps {
             return engines;
         } 
         
+        
         private List<AirplaneWheel> FindAllWheels() {
             var wheels = new List<AirplaneWheel>();
             if (targetController) wheels = targetController.transform.GetComponentsInChildren<AirplaneWheel>().ToList();
             return wheels;
         } 
 
+        
         private List<AirplaneControlSurface> FindAllControlSurfaces() {
             var controlSurfaces = new List<AirplaneControlSurface>();
             if (targetController) controlSurfaces = targetController.transform.GetComponentsInChildren<AirplaneControlSurface>().ToList();
             return controlSurfaces;
         }
 
+        
         private void SaveAirplanePreset(string assetPath) {
             if (targetController && !string.IsNullOrEmpty(assetPath)) {
                 var appPath = Application.dataPath;
@@ -88,4 +92,3 @@ namespace WheelApps {
         #endregion
     }
 }
-

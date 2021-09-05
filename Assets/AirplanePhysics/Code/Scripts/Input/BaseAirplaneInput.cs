@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 namespace WheelApps {
     public class BaseAirplaneInput : MonoBehaviour {
         #region Variables
@@ -56,6 +57,7 @@ namespace WheelApps {
         #endregion
         
         
+        
         #region Builtin Metods
         private void Update() {
             HandleInput();
@@ -64,6 +66,8 @@ namespace WheelApps {
         }
         #endregion
 
+        
+        
         #region Custom Methods
         protected virtual void HandleInput() {
             pitch = Input.GetAxis(V);

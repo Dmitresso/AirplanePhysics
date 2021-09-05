@@ -32,8 +32,7 @@ namespace WheelApps {
 
         [Header("Control Surfaces")]
         public List<AirplaneControlSurface> controlSurfaces = new List<AirplaneControlSurface>();
-
-
+        
         [SerializeField] private AirplaneState state = AirplaneState.LANDED;
         [SerializeField] private bool isGrounded = true;
         [SerializeField] private bool isLanded = true;

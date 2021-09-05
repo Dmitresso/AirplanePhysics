@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 namespace WheelApps {
     public class AirplaneGroundEffect : MonoBehaviour {
         #region Variables
@@ -7,24 +8,24 @@ namespace WheelApps {
         public float liftForce = 100f;
         public float maxSpeed = 15f;
         
-        
         private Rigidbody rb;
         #endregion
-
-
+        
+        
+        
         #region Builtin Methods
-
         private void Start() {
             rb = GetComponent<Rigidbody>();
         }
 
+        
         private void FixedUpdate() {
             if (!rb) return;
             HandleGroundEffect();
         }
-
         #endregion
 
+        
 
         #region Custom Methods
         protected virtual void HandleGroundEffect() {

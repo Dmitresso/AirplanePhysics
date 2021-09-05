@@ -1,5 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+
 
 namespace WheelApps {
     public class AirplaneAudio : MonoBehaviour {
@@ -22,6 +22,7 @@ namespace WheelApps {
             
         }
 
+        
         private void Update() {
             if (!input) return;
             HandleAudio();    

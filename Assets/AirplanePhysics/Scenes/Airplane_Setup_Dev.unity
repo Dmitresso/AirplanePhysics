@@ -7015,8 +7015,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMPH: 110
-  rbLerpSpeed: 0.025
-  maxLiftPower: 1000
+  rbLerpSpeed: 1
+  maxLiftPower: 3000
   liftCurve:
     serializedVersion: 2
     m_Curve:
@@ -7050,7 +7050,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  flapLiftPower: 300
+  flapLiftPower: 100
   dragFactor: 0.0004
   flapDragFactor: 0.0002
   pitchSpeed: 1500

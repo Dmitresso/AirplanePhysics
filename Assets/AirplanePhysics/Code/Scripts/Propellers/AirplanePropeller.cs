@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 namespace WheelApps {
     public class AirplanePropeller : MonoBehaviour {
         #region Variables
@@ -28,7 +29,6 @@ namespace WheelApps {
         private void Start() {
             if (mainProp && blurredProp) HandleSwapping(0f);            
         }
-
         #endregion
 
 
@@ -43,6 +43,7 @@ namespace WheelApps {
             if (mainProp && blurredProp) HandleSwapping(currentRPM);
         }
 
+        
         private void HandleSwapping(float currentRPM) {
             if (currentRPM > minQuadRPMs) {
                 blurredProp.gameObject.SetActive(true);
@@ -57,7 +58,6 @@ namespace WheelApps {
                 mainProp.gameObject.SetActive(true);
             }
         }
-        
         #endregion
     }
 }

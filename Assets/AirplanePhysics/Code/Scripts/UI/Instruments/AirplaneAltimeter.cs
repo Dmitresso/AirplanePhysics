@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 namespace WheelApps {
     public class AirplaneAltimeter : MonoBehaviour, IAirplaneUI {
         #region Variables
@@ -10,14 +11,6 @@ namespace WheelApps {
         public RectTransform thousandsPointer;
         #endregion
 
-
-
-        #region Builtin Methods
-        private void Start() {
-            
-        }
-        #endregion
-        
 
 
         #region Interface Methods
@@ -42,12 +35,6 @@ namespace WheelApps {
                 hundredsPointer.rotation = Quaternion.Euler(0f, 0f, - hundredsRotation);
             }
         }
-        #endregion
-
-
-
-        #region Custom Methods
-        
         #endregion
     }
 }

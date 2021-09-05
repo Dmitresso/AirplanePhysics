@@ -108,6 +108,7 @@ namespace WheelApps {
             }
         }
 
+        
         private void UpdateStats() {
             currentTime = (int) (Time.time - startTime);
             currentMinutes = (int) (currentTime / 60f);

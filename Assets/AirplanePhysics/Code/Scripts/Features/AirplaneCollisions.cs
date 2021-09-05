@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace WheelApps {
     public class AirplaneCollisions : MonoBehaviour {
         #region Variables
         public List<Vector3> hitPoints = new List<Vector3>();
         public List<Vector3> hitNormals = new List<Vector3>();
-        
-
         #endregion
 
 
+        
         #region Builtin Methods
         private void OnCollisionEnter(Collision collision) {
             foreach (var cp in collision.contacts) {
@@ -19,6 +19,7 @@ namespace WheelApps {
             }
         }
 
+        
         private void OnDrawGizmos() {
             if (hitPoints.Count > 0) {
                 for (var i = 0; i < hitPoints.Count; i++) {

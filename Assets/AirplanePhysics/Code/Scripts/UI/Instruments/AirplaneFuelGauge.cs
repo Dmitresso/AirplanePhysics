@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 namespace WheelApps {
     public class AirplaneFuelGauge : MonoBehaviour, IAirplaneUI {
         #region Variables
@@ -19,7 +20,5 @@ namespace WheelApps {
             }
         }
         #endregion
-        
-
     }
 }

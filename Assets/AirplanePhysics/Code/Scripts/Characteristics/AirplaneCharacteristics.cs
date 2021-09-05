@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 namespace WheelApps {
     public class AirplaneCharacteristics : MonoBehaviour {
         #region Variables
@@ -44,6 +45,7 @@ namespace WheelApps {
         private float csEfficiency;
         #endregion
 
+        
 
         #region Constants
         public const float mpsToMph = 2.23694f;

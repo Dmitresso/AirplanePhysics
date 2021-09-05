@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 namespace WheelApps {
     [CreateAssetMenu(fileName = "NewTrackData", menuName = "WheelApps/Track Data/New Track Data", order = 1)]
     public class TrackData : ScriptableObject {
@@ -33,4 +34,3 @@ namespace WheelApps {
         #endregion
     }
 }
-

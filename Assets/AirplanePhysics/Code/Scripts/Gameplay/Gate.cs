@@ -7,6 +7,7 @@ using UnityEngine.UI;
 namespace WheelApps {
     [Serializable] public class FloatEvent : UnityEvent<float> { }
     
+    
     public class Gate : MonoBehaviour {
         #region Variables
         [Header("Gate Properties")]
@@ -18,7 +19,6 @@ namespace WheelApps {
         [Header("Gate Events")]
         public FloatEvent OnClearedGate = new FloatEvent();
         public UnityEvent OnFailedGate = new UnityEvent();
-        
         
         private Vector3 gateDirection;
         public bool isActive;

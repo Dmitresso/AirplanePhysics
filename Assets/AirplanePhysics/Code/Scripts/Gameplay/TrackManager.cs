@@ -20,8 +20,7 @@ namespace WheelApps {
         
         [Header("Manager Events")]
         public UnityEvent OnCompletedRace = new UnityEvent();
-
-
+        
         private Track currentTrack;
         #endregion
 
@@ -73,6 +72,7 @@ namespace WheelApps {
             if (airplane) StartCoroutine(nameof(WaitForLanding));
         }
 
+        
         private IEnumerator WaitForLanding() {
             if (airplane.State != AirplaneState.LANDED) yield return null;
             OnCompletedRace?.Invoke();

@@ -1,12 +1,8 @@
 using UnityEngine;
 
+
 namespace WheelApps {
     public class XboxAirplaneInput : BaseAirplaneInput {
-        #region Variables
-        #endregion
-        
-        
-        
         #region Constants
         private const string Fire1 = "Fire1";
         private const string Y = "X_RH_Stick";
