@@ -19,6 +19,11 @@ namespace WheelApps {
             yaw = rThumbstick.HorizontalAxis;
             throttle = - rThumbstick.VerticalAxis;
         }
+
+
+        public void SetBrake(float value) {
+            
+        }
         #endregion
     }
 }
