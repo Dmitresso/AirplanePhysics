@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 17489679}
   - component: {fileID: 17489681}
   - component: {fileID: 17489680}
+  - component: {fileID: 17489682}
   m_Layer: 5
   m_Name: LeftThumbstick
   m_TagString: Untagged
@@ -279,6 +280,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 17489678}
   m_CullTransparentMesh: 1
+--- !u!114 &17489682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17489678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b07c5e7fe8e934d8841c6f5c28c487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useMouse: 1
+  knob: {fileID: 242131166}
 --- !u!1 &22964843
 GameObject:
   m_ObjectHideFlags: 0
@@ -4682,6 +4697,7 @@ GameObject:
   - component: {fileID: 1576433611}
   - component: {fileID: 1576433613}
   - component: {fileID: 1576433612}
+  - component: {fileID: 1576433614}
   m_Layer: 5
   m_Name: RightThumbstick
   m_TagString: Untagged
@@ -4747,6 +4763,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576433610}
   m_CullTransparentMesh: 1
+--- !u!114 &1576433614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576433610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b07c5e7fe8e934d8841c6f5c28c487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useMouse: 1
+  knob: {fileID: 938630358}
 --- !u!1 &1581266169
 GameObject:
   m_ObjectHideFlags: 0
