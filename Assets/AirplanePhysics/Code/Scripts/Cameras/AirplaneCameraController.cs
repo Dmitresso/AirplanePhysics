@@ -34,12 +34,14 @@ namespace WheelApps {
 
         #region Custom Methods
         protected virtual void SwitchCamera() {
-            if (cameras.Count <= 0) return;
-            DisableAllCameras();
-            cameraIndex++;
-            if (cameraIndex >= cameras.Count) cameraIndex = 0;
-            cameras[cameraIndex].enabled = true;
-            cameras[cameraIndex].GetComponent<AudioListener>().enabled = true;
+            if (cameras.Count > 0) {
+                DisableAllCameras();
+                cameraIndex++;
+                if (cameraIndex >= cameras.Count) cameraIndex = 0;
+                cameras[cameraIndex].enabled = true;
+                cameras[cameraIndex].GetComponent<AudioListener>().enabled = true;
+            }
+            input.CameraSwitch = false;
         }
 
         

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace WheelApps {
     public class MobileInput : BaseAirplaneInput {
         #region Variables
-        [Header("Mobile IInputs Properties")]
+        [Header("Mobile Inputs Properties")]
         public MobileThumbstick lThumbstick;
         public MobileThumbstick rThumbstick;
         #endregion
@@ -12,7 +12,7 @@ namespace WheelApps {
 
 
         #region Custom Methods
-        protected void HandleInput() {
+        protected override void HandleInput() {
             if (!lThumbstick || !rThumbstick) return;
             pitch = lThumbstick.VerticalAxis;
             roll = lThumbstick.HorizontalAxis;
@@ -28,6 +28,11 @@ namespace WheelApps {
 
         public void SetFlaps(int value) {
             flaps += value;
+        }
+
+
+        public void SetCamera(bool flag) {
+            cameraSwitch = true;
         }
         #endregion
     }

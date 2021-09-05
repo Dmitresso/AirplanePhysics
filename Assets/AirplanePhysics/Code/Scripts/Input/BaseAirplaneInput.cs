@@ -53,7 +53,11 @@ namespace WheelApps {
 
         public float Brake => brake;
         
-        public bool CameraSwitch => cameraSwitch;
+        public bool CameraSwitch {
+            get => cameraSwitch;
+            set => cameraSwitch = value;
+        }
+
         #endregion
         
         
