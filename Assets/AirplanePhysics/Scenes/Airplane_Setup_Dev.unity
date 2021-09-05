@@ -7240,6 +7240,7 @@ GameObject:
   - component: {fileID: 1894477949}
   - component: {fileID: 1894477951}
   - component: {fileID: 1894477950}
+  - component: {fileID: 1894477952}
   m_Layer: 0
   m_Name: Engine
   m_TagString: Untagged
@@ -7318,6 +7319,34 @@ MonoBehaviour:
   onFuelFull:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1894477952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894477948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe50eb752f4aa94c9c920f2ab221e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutoffKey: 111
+  OnEngineCutoff:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1894477950}
+        m_TargetAssemblyTypeName: WheelApps.AirplaneEngine, Assembly-CSharp
+        m_MethodName: set_ShutEngineOff
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1911896709
 GameObject:
   m_ObjectHideFlags: 0

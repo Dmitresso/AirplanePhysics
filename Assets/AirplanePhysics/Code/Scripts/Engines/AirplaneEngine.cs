@@ -18,7 +18,6 @@ namespace WheelApps {
         private bool isShutOff;
         private float lastThrottle;
         private float finalShutoffThrollte;
-
         private AirplaneFuel fuel;
         #endregion
 
@@ -51,6 +50,7 @@ namespace WheelApps {
         public Vector3 CalculateForce(float throttle) {
             var finalThrottle = Mathf.Clamp01(throttle);
 
+            
             if (!isShutOff) {
                 finalThrottle = powerCurve.Evaluate(finalThrottle);
                 lastThrottle = finalThrottle;
