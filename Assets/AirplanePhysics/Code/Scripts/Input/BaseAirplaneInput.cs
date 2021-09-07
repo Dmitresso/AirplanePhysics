@@ -57,7 +57,6 @@ namespace WheelApps {
             get => cameraSwitch;
             set => cameraSwitch = value;
         }
-
         #endregion
         
         

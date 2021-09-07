@@ -23,13 +23,6 @@ namespace WheelApps {
         public float yawSpeed = 1000f;
         public AnimationCurve controlSurfaceEfficiency = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
         
-
-        private float forwardSpeed;
-        public float ForwardSpeed => forwardSpeed;
-
-        private float mph;
-        public float MPH => mph;
-        
         
         private BaseAirplaneInput input;
         private Rigidbody rb;
@@ -38,6 +31,7 @@ namespace WheelApps {
 
         private float maxMPS;
         private float normalizeMPH;
+        
         private float angleOfAttack;
         private float pitchAngle;
         private float rollAngle;
@@ -45,7 +39,7 @@ namespace WheelApps {
         private float csEfficiency;
         #endregion
 
-        
+
 
         #region Constants
         public const float mpsToMph = 2.23694f;
@@ -53,19 +47,23 @@ namespace WheelApps {
         
         
 
-        #region Builtin Methods
+        #region Properties
+        private float forwardSpeed;
+        public float ForwardSpeed => forwardSpeed;
+
+        private float mph;
+        public float MPH => mph;
         #endregion
 
 
 
         #region Custom Methods
         public void Init(Rigidbody rb, BaseAirplaneInput input) {
+            this.input = input;
             this.rb = rb;
             startDrag = rb.drag;
             startAngularDrag = rb.angularDrag;
 
-            this.input = input;
-            
             maxMPS = maxMPH / mpsToMph;
         }
 
@@ -169,7 +167,7 @@ namespace WheelApps {
             var updatedVelocity = Vector3.Lerp(rb.velocity, transform.forward * forwardSpeed, forwardSpeed * angleOfAttack * rbLerpSpeed * Time.deltaTime);
             rb.velocity = updatedVelocity;
             
-            var updatedRotation = Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(rb.velocity.normalized, transform.up), rbLerpSpeed * Time.deltaTime);
+            var updatedRotation = Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(rb.velocity, transform.up), rbLerpSpeed * Time.deltaTime);
             rb.MoveRotation(updatedRotation);
         }
         #endregion

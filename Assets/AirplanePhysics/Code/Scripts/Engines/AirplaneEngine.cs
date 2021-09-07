@@ -49,7 +49,6 @@ namespace WheelApps {
         #region Custom Methods
         public Vector3 CalculateForce(float throttle) {
             var finalThrottle = Mathf.Clamp01(throttle);
-
             
             if (!isShutOff) {
                 finalThrottle = powerCurve.Evaluate(finalThrottle);
@@ -58,6 +57,7 @@ namespace WheelApps {
             else {
                 lastThrottle -= Time.deltaTime * shutOffSpeed;
                 lastThrottle = Mathf.Clamp01(lastThrottle);
+                finalShutoffThrollte = powerCurve.Evaluate(lastThrottle);
                 finalThrottle = finalShutoffThrollte;
             }
 

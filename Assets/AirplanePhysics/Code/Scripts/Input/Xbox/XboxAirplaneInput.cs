@@ -21,7 +21,7 @@ namespace WheelApps {
             yaw += Input.GetAxis(Y);
             throttle += Input.GetAxis(T);
 
-            brake = Input.GetAxis(Fire1);
+            brake += Input.GetAxis(Fire1);
 
             if (Input.GetKeyDown(XRB)) flaps += 1;
             if (Input.GetKeyDown(XLB)) flaps -= 1;
