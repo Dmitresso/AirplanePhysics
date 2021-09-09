@@ -17,7 +17,7 @@ namespace WheelApps {
 
         private bool isShutOff;
         private float lastThrottle;
-        private float finalShutoffThrollte;
+        private float finalShutoffThrottle;
         private AirplaneFuel fuel;
         #endregion
 
@@ -57,8 +57,8 @@ namespace WheelApps {
             else {
                 lastThrottle -= Time.deltaTime * shutOffSpeed;
                 lastThrottle = Mathf.Clamp01(lastThrottle);
-                finalShutoffThrollte = powerCurve.Evaluate(lastThrottle);
-                finalThrottle = finalShutoffThrollte;
+                finalShutoffThrottle = powerCurve.Evaluate(lastThrottle);
+                finalThrottle = finalShutoffThrottle;
             }
 
             currentRPM = finalThrottle * maxRPM;

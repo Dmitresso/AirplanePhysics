@@ -88,7 +88,7 @@ namespace WheelApps {
         
         
         protected void HandleStickyThrottle() {
-            stickyThrottle += - throttle * throttleSpeed * Time.deltaTime;
+            stickyThrottle += throttle * throttleSpeed * Time.deltaTime;
             stickyThrottle = Mathf.Clamp01(stickyThrottle);
         }
         
