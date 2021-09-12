@@ -1,4 +1,4 @@
-# Intro-to-Airplane-Physics-in-Unity-3D
+# AirplanePhysics
 
 Download:
 
